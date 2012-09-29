@@ -8,11 +8,11 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Video List Manager is the video list plugin for WordPress. 
+Add, edit, delete and manage youtube videos, separated by categories and display them by category. 
 
 == Description ==
 
-Video List Manager is the video list plugin for WordPress. Help you to add, edit, delete and manage youtube videos, separated by categories and display them by category.
+Video List Manager is the video list plugin for WordPress. It helps you to add, edit, delete and manage youtube videos, separated by categories and display them by category.
 
 * Features:
 - Add Youtube Video
