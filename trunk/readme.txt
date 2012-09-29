@@ -1,6 +1,6 @@
-=== Plugin Name ===
+=== Video List Manager ===
 Concontributors: thanhtungtnt 
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=NW7JZN8BEHFVJ
+Donate link: http://qcvn.vn/video-list-manager
 Tags: video, youtube, video list, video manager, video list manager 
 Requires at least: 3.0.1
 Tested up to: 3.4

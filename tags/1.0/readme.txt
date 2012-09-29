@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Video List Manager ===
 Concontributors: thanhtungtnt 
 Donate link: http://qcvn.vn/video-list-manager
 Tags: video, youtube, video list, video manager, video list manager 
