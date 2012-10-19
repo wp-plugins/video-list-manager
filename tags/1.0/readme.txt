@@ -14,19 +14,31 @@ Add, edit, delete and manage youtube videos, separated by categories and display
 
 Video List Manager is the video list plugin for WordPress. It helps you to add, edit, delete and manage youtube videos, separated by categories and display them by category.
 
-** Features:
+Features:
+
 - Add Youtube Video
+
 - Edit Video
+
 - Delete Video
+
 - Manage Video
+
 - Add Category
+
 - Edit Category
+
 - Delete Category
+
 - Manage Video
+
 - Default Settings 
+
 - Using jquery colorbox to show video, support 5 colorbox skins.
 
-** Some shortcodes you need to know: 
+
+Some shortcodes you need to know: 
+
 - To show a video item you use this shordcode in your post/page : 
 [tnt_video id=]
 id: video id
@@ -49,7 +61,8 @@ height	: height of video in list
 
 1. Download, install, and activate the Video List Manager plugin.
 
-2. From your WordPress Dashboard, go to Video List Manager > Add Video.
+2. From your WordPress Dashboard, go to Video List Manager > Add Video. 
+
 To add cateogory, go to Video List Manager > Add Cateogory
 
 3. Go to a post/page, use shortcodes. 
