@@ -17,25 +17,15 @@ Video List Manager is the video list plugin for WordPress. It helps you to add, 
 Features:
 
 - Add Youtube Video
-
 - Edit Video
-
 - Delete Video
-
 - Manage Video
-
 - Add Category
-
 - Edit Category
-
 - Delete Category
-
 - Manage Video
-
 - Default Settings 
-
 - Using jquery colorbox to show video, support 5 colorbox skins.
-
 
 Some shortcodes you need to know: 
 
@@ -55,7 +45,7 @@ limit	: numbers of video you want show per page
 width	: width of video in list
 height	: height of video in list
 
-** Note: Need to enable the permalink to run this plugin
+Note: Need to enable the permalink to run this plugin
 
 == Installation ==
 
