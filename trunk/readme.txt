@@ -1,10 +1,10 @@
 === Video List Manager ===
 Concontributors: thanhtungtnt 
 Donate link: http://videolistmanager.blogspot.com/
-Tags: video, youtube, video list, video manager, video list manager 
+Tags: video, youtube, vimeo, video list, video manager, video list manager 
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Add, edit, delete and manage youtube videos, separated by categories and display
 
 == Description ==
 
-Video List Manager is the video list plugin for WordPress. It helps you to add, edit, delete and manage youtube videos, separated by categories and display them by category.
+Video List Manager is the video list plugin for WordPress. It helps you to add, edit, delete and manage YOUTUBE, VIMEO videos, separated by categories and display them by category.
 
 Features:
 
@@ -73,6 +73,9 @@ No Frequently Asked Questions
 = 1.0 =
 * The first version
 * Support youtube video
+
+= 1.1 =
+* Support Vimeo video
 
 == Upgrade Notice ==
 
