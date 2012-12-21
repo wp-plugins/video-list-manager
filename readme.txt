@@ -76,6 +76,7 @@ No Frequently Asked Questions
 
 = 1.1 =
 * Support Vimeo video
+* Add validate to "add video form", "edit video form", "edit category form", "setting form" 
 
 == Upgrade Notice ==
 
