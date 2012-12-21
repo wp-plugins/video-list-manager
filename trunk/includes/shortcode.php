@@ -6,6 +6,10 @@ add_shortcode('tnt_video_list', 'tntSCVideoList');
 add_shortcode('tnt_video', 'tntSCVideo');
 
 /**
+ * YOUTUBE
+ */
+
+/**
  * Function get embed code from youtube link
  */
 function tntGetYoutubeEmbedLink($link)
@@ -28,6 +32,32 @@ function tntGetYoutubeThumbLink($link)
 	return $youtubeThumbLink;
 }
 
+/**
+ * VIMEO
+ */
+
+/**
+ * Function get embed code from vimeo link
+ */
+function tntGetVimeoEmbedLink($link)
+{
+	$vimeoEmbedLink = 'http://player.vimeo.com/video/';
+	$l = explode('vimeo.com/', $link);
+	$embedCode = $l[1];
+	$vimeoEmbedLink .= $embedCode;
+	return $vimeoEmbedLink;
+}
+
+/**
+ * Function get thumb link from vimeo link
+ */
+function tntGetVimeoThumbLink($link)
+{
+	$l = explode('vimeo.com/', $link);
+	$embedCode = $l[1];
+	$hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$embedCode.php"));
+	return $hash[0]['thumbnail_large'];
+}
 
 /**
  * Callback function for shortcode [tnt_video_list]
@@ -99,6 +129,10 @@ function tntSCVideoList($attr){
 			case "Youtube" :
 				$linkEmbed = tntGetYoutubeEmbedLink($video->video_link); 
 				$thumbImg = tntGetYoutubeThumbLink($video->video_link);
+				break;
+			case "Vimeo" :
+				$linkEmbed = tntGetVimeoEmbedLink($video->video_link);
+				$thumbImg = tntGetVimeoThumbLink($video->video_link);
 				break;			
 			default:
 				break;
