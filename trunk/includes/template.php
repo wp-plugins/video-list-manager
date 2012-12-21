@@ -79,7 +79,8 @@
 	add_action('init', 'tntAddBackEndJS');
 	function tntAddBackEndJS() {
         if (is_admin()) {
-            wp_enqueue_script('tntscriptAdmin', TNT_JS_URL.'/admin.js', false, '1.0', true);
+        	wp_enqueue_script('tntscriptAdmin1', TNT_JS_URL.'/jquery.validate.js', false, '1.0', true);
+            wp_enqueue_script('tntscriptAdmin2', TNT_JS_URL.'/admin.js', false, '1.0', true);
         }
     }
 

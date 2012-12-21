@@ -5,24 +5,36 @@
 
 	if(isset($_POST['tntAddVideo']))
 	{
-		$v = new TNT_Video();
+		$videoCat 		= $_POST["vCat"];
+		$videoType 		= $_POST["vLinkType"];
+		$arrVideoTitle 	= $_POST["vTitle"]; 
+		$arrVideoLink 	= $_POST["vLink"];
+		$arrVideoStatus = $_POST["vStatus"];
+		$arrVideoOrder 	= $_POST["vOrder"];
 
-		$v->videoTitle 	= esc_html($_POST["vTitle"]);
-		$v->videoCat 	= $_POST["vCat"];
-		$v->videoType 	= $_POST["vLinkType"];
-		$v->videoLink 	= esc_url($_POST["vLink"]);
-		$v->videoStatus = ($_POST["vStatus"]) ? $_POST["vStatus"] : "0";
-		$v->videoOrder 	= ($_POST["vOrder"]) ? $_POST["vOrder"] : "100";
+		$countVideo = count($arrVideoTitle);
 
+		for($i=0; $i<$countVideo; $i++)
+		{
+			$v = new TNT_Video();
+			$v->videoTitle 	= esc_html($arrVideoTitle[$i]);
+			$v->videoCat 	= $videoCat;
+			$v->videoType 	= $videoType;
+			$v->videoLink 	= esc_url($arrVideoLink[$i]);
+			$v->videoStatus = $arrVideoStatus[$i];
+			$v->videoOrder 	= $arrVideoOrder[$i];
+			$v->tntInsertVideo();
+		}
 		
-		if($v->tntInsertVideo())
-		{
-			$location = add_query_arg(array('m'=>1));
-		}
-		else
-		{
-			$location = add_query_arg(array('m'=>0));			
-		}
+		// if($v->tntInsertVideo())
+		// {
+		// 	$location = add_query_arg(array('m'=>1));
+		// }
+		// else
+		// {
+		// 	$location = add_query_arg(array('m'=>0));			
+		// }
+		$location = add_query_arg(array('m'=>1));
 		Header("Location: $location");
 	}
 
