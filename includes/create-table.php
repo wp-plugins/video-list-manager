@@ -99,9 +99,14 @@
 		$tableName = $wpdb->prefix."tnt_videos_type";
 		$type_title = "Youtube";
 		$firstID = tnt_check_id_exists($tableName, "video_type_id", 1);
+		$secondID = tnt_check_id_exists($tableName, "video_type_id", 1);
 		if($firstID == false)
 		{
 			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => $type_title) );
+		}
+		if($secondID == false)
+		{
+			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => "Vimeo"));
 		}
 	}
 
