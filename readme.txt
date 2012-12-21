@@ -8,7 +8,7 @@ Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Add, edit, delete and manage youtube videos, separated by categories and display them by category. 
+Add, edit, delete and manage YOUTUBE, VIMEO videos, separated by categories and display them by category. 
 
 == Description ==
 
