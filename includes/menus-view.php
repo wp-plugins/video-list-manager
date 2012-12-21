@@ -232,22 +232,19 @@ function tnt_video_add(){
 					$m = $_GET["m"];
 					if($m) 
 					{
-						showMessage("Your video added successfully!", $m);
+						showMessage("Your video(s) added successfully!", $m);
 					}
 					else
 					{
-						showMessage("Your video added failed!", $m);	
+						showMessage("Your video(s) added failed!", $m);	
 					}	
 				}
 			 ?>
-			<form method="POST" action="">
-				<table class="form-table">
+			<form id="addVideoForm" method="POST" action="">
+				<div id="message" class="errorContainer error dpn"></div>
+				<table class="borderB form-table">
 					<tr valign="top">
-						<th scope="row"><label for="vTitle">Title</label></th>
-						<td><input type="text" size="50" name="vTitle" /></td>
-					</tr>
-					<tr valign="top">
-						<th scope="row"><label for="vCat">Category</label></th>
+						<th scope="row"><label for="vCat">Select Category</label></th>
 						<td>
 							<?php echo TNT_VideoCat::tntDisplayListCat(); ?>
 						</td>
@@ -258,22 +255,38 @@ function tnt_video_add(){
 							<?php echo TNT_VideoType::tntDisplayListType(); ?>
 						</td>
 					</tr>
-					<tr valign="top">
-						<th scope="row"><label for="vLink">Link</label></th>
-						<td><input type="text" size="50" name="vLink" /></td>
-					</tr>
-					<tr valign="top">
-						<th scope="row"><label for="vStatus">Is Active ?</label></th>
-						<td><input type="checkbox" name="vStatus" checked value="1" /></td>
-					</tr>
-					<tr>
-						<th scope="row"><label for="vOrder">Order Number</label></th>
-						<td><input type="text" size="3" name="vOrder" /></td>
-					</tr>
+				</table>
+				<div class="infoVideoWrapper">
+					<table class="infoVideo borderDB form-table">
+						<tr valign="top">
+							<th scope="row"><label for="vTitle">Title</label></th>
+							<td><input type="text" class="required" size="50" name="vTitle[]" /></td>
+						</tr>
+						<tr valign="top">
+							<th scope="row"><label for="vLink">Link</label></th>
+							<td><input type="url" class="required" size="50" name="vLink[]" /></td>
+						</tr>
+						<tr valign="top">
+							<th scope="row"><label for="vStatus">Status</label></th>
+							<td>
+								<select name="vStatus[]">
+									<option value="1">Published</option>
+									<option value="0">Unpublished</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row"><label for="vOrder">Order Number</label></th>
+							<td><input type="text" class="required digits" size="3" name="vOrder[]" value="100" /></td>
+						</tr>
+					</table>
+				</div>
+				<table class="form-table">
 					<tr valign="top">
 						<th scope="row"></th>
 						<td>
 							<input type="submit" name="tntAddVideo" value="Add Video" class="button-primary"/>
+							<button class="addMoreVideo button-secondary">Add More</button>
 							<input type="submit" name="reset" value="Reset" class="button-secondary">
 						</td>
 					</tr>
@@ -317,13 +330,9 @@ function tnt_video_edit(){
 					}	
 				}
 			 ?>
-			<form method="POST" action="">
+			<form id="editVideoForm" method="POST" action="">
 				<input type="hidden" name="vID" value="<?php echo $v->videoID ?>" />
 				<table class="form-table">
-					<tr valign="top">
-						<th scope="row"><label for="vTitle">Title</label></th>
-						<td><input type="text" size="50" name="vTitle" value="<?php echo $v->videoTitle ?>" /></td>
-					</tr>
 					<tr valign="top">
 						<th scope="row"><label for="vCat">Category</label></th>
 						<td>
@@ -335,6 +344,10 @@ function tnt_video_edit(){
 						<td>
 							<?php echo TNT_VideoType::tntDisplayListType($v->videoType); ?>
 						</td>
+					</tr>
+					<tr valign="top">
+						<th scope="row"><label for="vTitle">Title</label></th>
+						<td><input type="text" size="50" name="vTitle" value="<?php echo $v->videoTitle ?>" /></td>
 					</tr>
 					<tr valign="top">
 						<th scope="row"><label for="vLink">Link</label></th>
@@ -711,7 +724,7 @@ function tnt_video_cat_edit(){
 					}	
 				}
 			 ?>
-			<form method="POST" action="">
+			<form id="editVideoCatForm" method="POST" action="">
 				<input type="hidden" name="catID" value="<?php echo $c->videoCatID ?>" /> 
 				<table class="tntFormTable form-table">
 					<tr valign="top">
@@ -791,7 +804,7 @@ function tnt_video_option(){
 				//Get Plugin Options
 				$tntOptions = get_option('tntVideoManageOptions');
 			 ?>
-			<form method="POST" action="">
+			<form id="optionVideoForm" method="POST" action="">
 				<table class="tntFormTable form-table">
 					<tr valign="top">
 						<th scope="row"><label for="videoLimit">Limit videos per page (Frontend)</label></th>

@@ -149,6 +149,7 @@ class TNT_VideoCat {
                     FROM $tableName
                     WHERE video_cat_id = $catID";
         }
+        $sql .= " ORDER BY video_cat_title ASC";
         $results = $wpdb->get_results($sql);
         return $results;
     }
