@@ -16,7 +16,7 @@ Video List Manager is the video list plugin for WordPress. It helps you to add, 
 
 Features:
 
-- Add Youtube Video
+- Add Youtube/Vimeo Video
 - Edit Video
 - Delete Video
 - Manage Video
@@ -75,6 +75,7 @@ No Frequently Asked Questions
 * Support youtube video
 
 = 1.1 =
+* Add multi video to a category
 * Support Vimeo video
 * Add validate to "add video form", "edit video form", "edit category form", "setting form" 
 
@@ -82,6 +83,9 @@ No Frequently Asked Questions
 
 = 1.0 =
 * No notice
+
+= 1.1 =
+* If the plugin don't auto insert video type "Vimeo", you should insert manually a Vimeo type in table "wp_tnt_videos_type"
 
 == Arbitrary section ==
 
