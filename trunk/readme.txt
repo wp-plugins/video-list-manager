@@ -4,7 +4,7 @@ Donate link: http://videolistmanager.blogspot.com/
 Tags: video, youtube, vimeo, video list, video manager, video list manager 
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,49 +12,45 @@ Add, edit, delete and manage YOUTUBE, VIMEO videos, separated by categories and 
 
 == Description ==
 
-Video List Manager is the video list plugin for WordPress. It helps you to add, edit, delete and manage YOUTUBE, VIMEO videos, separated by categories and display them by category.
+Video List Manager is the video list plugin for WordPress. It helps you to add, edit, delete and manage YOUTUBE, VIMEO videos, separated by categories and display them by category automaticly.
 
 Features:
-
-- Add Youtube/Vimeo Video
-- Edit Video
-- Delete Video
-- Manage Video
-- Add Category
-- Edit Category
-- Delete Category
-- Manage Video
-- Default Settings 
+- Support Youtube, Vimeo Video
+- Add/Edit/Delete/Manage Video 
+- Add/Edit/Delete/Manage Category
+- Config Settings 
 - Using jquery colorbox to show video, support 5 colorbox skins.
+- Fit all layouts
 
 Some shortcodes you need to know: 
 
-- To show a video item you use this shordcode in your post/page : 
-[tnt_video id=]
-id: video id
-You also can use some following attributes to custom videos list
-width	: width of video in list
-height	: height of video in list
+- To show a video item you use this shordcode in your post/page: 
+
+id: video id 
+
+You also can use some following attributes to custom the width and height of video:
++ width	: width of video in list
++ height	: height of video in list
+
+Ex: [tnt_video id=1 width="600" height="400"] 
 
 - To Show a videos list by category id you use this shordcode in your post/page: 
 [tnt_video_list id=] 
 id: category id of videos list
-You also can use some following attributes to custom videos list
-col  	: numbers of column you want to show  
-limit	: numbers of video you want show per page
-width	: width of video in list
-height	: height of video in list
+
+You also can use some following attributes to custom videos list:
++ col  	 : numbers of column you want to show  
++ limit	 : numbers of video you want show per page
++ width	 : width of video in list
++ height : height of video in list
 
 Note: Need to enable the permalink to run this plugin
 
 == Installation ==
 
 1. Download, install, and activate the Video List Manager plugin.
-
 2. From your WordPress Dashboard, go to Video List Manager > Add Video. 
-
 To add cateogory, go to Video List Manager > Add Cateogory
-
 3. Go to a post/page, use shortcodes. 
 
 == Frequently Asked Questions ==
@@ -79,6 +75,11 @@ No Frequently Asked Questions
 * Support Vimeo video
 * Add validate to "add video form", "edit video form", "edit category form", "setting form" 
 
+= 1.2 =
+* Fix bug add single video
+* Fix bug update database
+* Add remove button to video item
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -86,6 +87,9 @@ No Frequently Asked Questions
 
 = 1.1 =
 * If the plugin don't auto insert video type "Vimeo", you should insert manually a Vimeo type in table "wp_tnt_videos_type"
+
+= 1.2 =
+* No notice
 
 == Arbitrary section ==
 
@@ -103,7 +107,7 @@ SHORTCODES EXAMPLE:
 To show a video list with category id = 2 : 
 [tnt_video_list id=4] (default: 2 columns, 4 videos per page, width: 480, height: 360)
 
-To show a video list with category id = 4 , 3 columns, 10 videos per page, width: 520, height: 420 : 
+To show a video list with category id = 4, 3 columns, 10 videos per page, width: 520px, height: 420px : 
 [tnt_video_list id=4 col="3" limit="10" width="520" height="420"]
 
 To show a video with video id = 3, width: 400, height: 300 
