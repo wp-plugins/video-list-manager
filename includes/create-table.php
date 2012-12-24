@@ -92,21 +92,40 @@
 	}
 
 	/**
+	 * Check if title exists in tableName
+	 *
+	 * @param 	string 		tableName 	name of table
+	 * @param 	string 		fieldID 	name of field which contain ID
+	 * @param 	int 		fieldValue 	value of field
+	 * @return 	bool 		if ID = NULL ==> False
+	 *						else True
+	 */
+	function tnt_check_title_exists($tableName, $fieldTitle, $fieldValue)
+	{
+		$check = true;
+		global $wpdb;
+		$title = $wpdb->get_var( $wpdb->prepare( "SELECT $fieldTitle FROM $tableName WHERE $fieldTitle like '$fieldValue';" ) );
+		if($title == null){
+			$check = false;
+		}
+		return $check;
+	}
+
+	/**
 	 * Insert data into database: tnt_videos_type
 	 */
 	function tnt_install_data_videos_type_table(){
 		global $wpdb;
 		$tableName = $wpdb->prefix."tnt_videos_type";
-		$type_title = "Youtube";
-		$firstID = tnt_check_id_exists($tableName, "video_type_id", 1);
-		$secondID = tnt_check_id_exists($tableName, "video_type_id", 1);
-		if($firstID == false)
+		$firstTitle = tnt_check_title_exists($tableName, "video_type_title", "Youtube");
+		$secondTitle = tnt_check_title_exists($tableName, "video_type_title", "Vimeo");
+		if($firstTitle == false)
 		{
-			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => $type_title) );
+			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => 'Youtube') );
 		}
-		if($secondID == false)
+		if($secondTitle == false)
 		{
-			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => "Vimeo"));
+			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => 'Vimeo'));
 		}
 	}
 
@@ -133,12 +152,12 @@
 		$tableName = $wpdb->prefix."tnt_videos_type";
 		$installed_ver = get_option( "tnt_video_list_manager_db_version" );
 
-		if ($installed_ver != $tnt_db_version) {
+		if ($installed_ver != $tnt_db_version && tnt_check_title_exists($tableName, "video_type_title", "Vimeo") == false) {
 			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => "Vimeo"));
 		}
 		else
 		{
-			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => "Vimeo123"));
+			//Do something
 		}
 	}
 ?>
