@@ -30,6 +30,10 @@ jQuery(document).ready(function($){
 	tntInfoVideoTable += '<th scope="row"><label for="vOrder">Order Number</label></th>';
 	tntInfoVideoTable += '<td><input type="text" class="required digits" size="3" name="vOrder[]" value="100"></td>';
 	tntInfoVideoTable += '</tr>';
+	tntInfoVideoTable += '<tr>';
+	tntInfoVideoTable += '<th scope="row"></th>';
+	tntInfoVideoTable += '<td><a href="#" class="removeVideoItem button-highlighted title="Remove Video Item">Remove</a></td>';
+	tntInfoVideoTable += '</tr>';
 	tntInfoVideoTable += '</tbody></table>';
 
 	var tntVideoMessageError = '<p>Errors! Please check again infos you enter <br />';
@@ -41,6 +45,10 @@ jQuery(document).ready(function($){
 		e.preventDefault();
 		e.stopPropagation();
 		$('.infoVideoWrapper').append(tntInfoVideoTable);
+	});
+
+	$('.removeVideoItem').live('click', function(){
+		$(this).parent().parent().parent().parent().remove();
 	});
 
 	$("#addVideoForm").validate();

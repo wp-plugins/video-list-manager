@@ -279,6 +279,10 @@ function tnt_video_add(){
 							<th scope="row"><label for="vOrder">Order Number</label></th>
 							<td><input type="text" class="required digits" size="3" name="vOrder[]" value="100" /></td>
 						</tr>
+						<tr>
+							<th scope="row"></th>
+							<td><a href="#" class="removeVideoItem button-highlighted" title="Remove Video Item">Remove</a></td>
+						</tr>
 					</table>
 				</div>
 				<table class="form-table">

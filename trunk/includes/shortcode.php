@@ -73,12 +73,12 @@ function tntSCVideoList($attr){
 	$columns = (isset($attr['col'])) ? $attr['col'] : $columnOption;
 
 	//Get video width
-	$videoWidth = $tntOptions['videoWidth'];
-	$vidWidth 	= (isset($attr['width'])) ? $attr['width'] : $videoWidth;
+	$videoWidthOption = $tntOptions['videoWidth'];
+	$vidWidth 	= (isset($attr['width'])) ? $attr['width'] : $videoWidthOption;
 
 	//Get video height
-	$videoHeight = $tntOptions['videoHeight'];
-	$vidHeight 	 = (isset($attr['height'])) ? $attr['height'] : $videoHeight;	 
+	$videoHeightOption = $tntOptions['videoHeight'];
+	$vidHeight 	 = (isset($attr['height'])) ? $attr['height'] : $videoHeightOption;	 
 
 	//Get Limit
 	$limitOption = $tntOptions['limitPerPage'];
@@ -156,14 +156,18 @@ function tntSCVideoList($attr){
  * Callback function for shortcode [tnt_video]
  */
 function tntSCVideo($attr){
+	$tntOptions = get_option('tntVideoManageOptions');
+
 	//Get video ID
 	$videoID = (int)$attr['id'];
 
 	//Get width
-	$videoWidth = (isset($attr['width'])) ? $attr['width'] : 400; 
+	$videoWidthOption = $tntOptions['videoWidth'];
+	$videoWidth = (isset($attr['width'])) ? $attr['width'] : $videoWidthOption; 
 
 	//Get height
-	$videoHeight = (isset($attr['height'])) ? $attr['height'] : 300; 
+	$videoHeightOption = $tntOptions['videoHeight'];
+	$videoHeight = (isset($attr['height'])) ? $attr['height'] : $videoHeightOption; 
 
 	//Get video by videoID
 	$args = array('videoID' => $videoID, 'isPublish' => 1);
@@ -174,9 +178,19 @@ function tntSCVideo($attr){
 		$vShow = "";
 		foreach ($video as $vid)
 		{
-			$linkEmbed = tntGetYoutubeEmbedLink($vid->video_link);
 			$vShow['videoTitle'] = $vid->video_title;
-			$vShow['videoFrame'] = '<iframe width="'.$videoWidth.'" height="'.$videoHeight.'" src="'.$linkEmbed.'" frameborder="0" allowfullscreen></iframe>'; 
+			switch ($vid->video_link_type)
+			{
+				case "1":
+					$linkEmbed = tntGetYoutubeEmbedLink($vid->video_link);
+					$vShow['videoFrame'] = '<iframe width="'.$videoWidth.'" height="'.$videoHeight.'" src="'.$linkEmbed.'" frameborder="0" allowfullscreen></iframe>';
+					break;
+				case "2":
+					$linkEmbed = tntGetVimeoEmbedLink($vid->video_link);
+					$vShow['videoFrame'] = '<iframe width="'.$videoWidth.'" height="'.$videoHeight.'" src="'.$linkEmbed.'" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+					break;
+			}
+			
 		}
 
 		$view = tntTemplateVideoItem($vShow);	
