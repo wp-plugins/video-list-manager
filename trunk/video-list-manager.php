@@ -48,6 +48,7 @@ License: GPLv2
     register_activation_hook(__FILE__,'tnt_install_videos_type_table');
     register_activation_hook(__FILE__,'tnt_install_data_videos_type_table');
     register_activation_hook(__FILE__,'tnt_install_data_videos_cat_table');
+    register_activation_hook(__FILE__,'tnt_update_data_videos_type_table');
 
     /**
      * Message
