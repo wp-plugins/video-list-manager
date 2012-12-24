@@ -124,4 +124,21 @@
 			$rows_affected = $wpdb->insert( $tableName, array( 'video_cat_title' => $cat_title, 'video_cat_parent_id' => $cat_parent_id ) );	
 		}
 	}
+
+	/**
+	 * Update database : insert vimeo type
+	 */
+	function tnt_update_data_videos_type_table(){
+		global $wpdb;
+		$tableName = $wpdb->prefix."tnt_videos_type";
+		$installed_ver = get_option( "tnt_video_list_manager_db_version" );
+
+		if ($installed_ver != $tnt_db_version) {
+			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => "Vimeo"));
+		}
+		else
+		{
+			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => "Vimeo123"));
+		}
+	}
 ?>
