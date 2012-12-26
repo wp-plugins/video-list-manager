@@ -17,46 +17,34 @@ Video List Manager is the video list plugin for WordPress. It helps you to add, 
 Features:
 
 - Support Youtube, Vimeo Video
-
 - Add/Edit/Delete/Manage Video 
-
 - Add/Edit/Delete/Manage Category
-
 - Config Settings 
-
 - Using jquery colorbox to show video, support 5 colorbox skins.
-
 - Fit all layouts
 
-Some shortcodes you need to know: 
+Some shortcodes you need to know:
 
-- To show a video item you use this shordcode in your post/page: 
-
-id: video id 
+- To show a video item you use this shordcode in your post/page: [tnt_video id=](id: video id)
 
 You also can use some following attributes to custom the width and height of video:
 
-+ width	: width of video in list
+++ width	: width of video in list
+++ height	: height of video in list
+++ Ex: [tnt_video id=1 width="600" height="400"] 
 
-+ height	: height of video in list
-
-Ex: [tnt_video id=1 width="600" height="400"] 
-
-- To Show a videos list by category id you use this shordcode in your post/page: 
-[tnt_video_list id=] 
-id: category id of videos list
+- To Show a videos list by category id you use this shordcode in your post/page: [tnt_video_list id=] (id: category id of videos list)
 
 You also can use some following attributes to custom videos list:
 
-+ col  	 : numbers of column you want to show  
-
-+ limit	 : numbers of video you want show per page
-
-+ width	 : width of video in list
-
-+ height : height of video in list
+++ col  	 : numbers of column you want to show
+++ limit	 : numbers of video you want show per page
+++ width	 : width of video in list
+++ height : height of video in list
 
 Note: Need to enable the permalink to run this plugin
+
+Tutorial: http://www.youtube.com/embed/R_0BmfKC1Jw
 
 == Installation ==
 
@@ -118,7 +106,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 SHORTCODES EXAMPLE: 
-To show a video list with category id = 2 : 
+To show a video list with category id = 4 : 
 [tnt_video_list id=4] (default: 2 columns, 4 videos per page, width: 480, height: 360)
 
 To show a video list with category id = 4, 3 columns, 10 videos per page, width: 520px, height: 420px : 
