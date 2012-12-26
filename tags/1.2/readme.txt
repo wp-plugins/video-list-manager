@@ -15,6 +15,7 @@ Add, edit, delete and manage YOUTUBE, VIMEO videos, separated by categories and 
 Video List Manager is the video list plugin for WordPress. It helps you to add, edit, delete and manage YOUTUBE, VIMEO videos, separated by categories and display them by category automaticly.
 
 Features:
+
 - Support Youtube, Vimeo Video
 - Add/Edit/Delete/Manage Video 
 - Add/Edit/Delete/Manage Category
@@ -22,28 +23,34 @@ Features:
 - Using jquery colorbox to show video, support 5 colorbox skins.
 - Fit all layouts
 
-Some shortcodes you need to know: 
+Some shortcodes you need to know:
 
-- To show a video item you use this shordcode in your post/page: 
-[tnt_video id=]
+- To show a video item you use this shordcode in your post/page: [tnt_video id=]
+
 id: video id 
 
 You also can use some following attributes to custom the width and height of video:
+
 + width	: width of video in list
 + height	: height of video in list
 Ex: [tnt_video id=1 width="600" height="400"] 
 
 - To Show a videos list by category id you use this shordcode in your post/page: 
 [tnt_video_list id=] 
+
 id: category id of videos list
 
 You also can use some following attributes to custom videos list:
-+ col  	 : numbers of column you want to show  
+
++ col  	 : numbers of column you want to show
 + limit	 : numbers of video you want show per page
 + width	 : width of video in list
 + height : height of video in list
 
 Note: Need to enable the permalink to run this plugin
+
+Tutorial: 
+<iframe width="420" height="315" src="http://www.youtube.com/embed/R_0BmfKC1Jw" frameborder="0" allowfullscreen></iframe>
 
 == Installation ==
 
