@@ -1,10 +1,10 @@
 === Video List Manager ===
 Concontributors: thanhtungtnt 
 Donate link: http://videolistmanager.blogspot.com/
-Tags: video, youtube, vimeo, video list, video manager, video list manager 
+Tags: video, youtube, vimeo, dailymotion, video list, video manager, video list manager 
 Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 1.2
+Tested up to: 3.5
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,7 +44,7 @@ You also can use some following attributes to custom videos list:
 
 Note: Need to enable the permalink to run this plugin
 
-Tutorial: http://www.youtube.com/embed/R_0BmfKC1Jw
+Tutorial: http://www.youtube.com/watch?v=R_0BmfKC1Jw
 
 == Installation ==
 
@@ -81,6 +81,9 @@ No Frequently Asked Questions
 * Fix bug add single video
 * Fix bug update database
 * Add remove button to video item
+
+= 1.3 =
+* Support Dailymotion Video
 
 == Upgrade Notice ==
 

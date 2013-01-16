@@ -7,6 +7,9 @@
  * Author: Tung Pham
  */
 
+	global $tnt_db_version;
+	$tnt_db_version = "1.3";
+
 	/**
 	 * Create table : tnt_videos
 	 */
@@ -119,6 +122,7 @@
 		$tableName = $wpdb->prefix."tnt_videos_type";
 		$firstTitle = tnt_check_title_exists($tableName, "video_type_title", "Youtube");
 		$secondTitle = tnt_check_title_exists($tableName, "video_type_title", "Vimeo");
+		$thirdTitle = tnt_check_title_exists($tableName, "video_type_title", "DailyMotion");
 		if($firstTitle == false)
 		{
 			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => 'Youtube') );
@@ -149,15 +153,18 @@
 	 */
 	function tnt_update_data_videos_type_table(){
 		global $wpdb;
+		global $tnt_db_version;
 		$tableName = $wpdb->prefix."tnt_videos_type";
 		$installed_ver = get_option( "tnt_video_list_manager_db_version" );
 
 		if ($installed_ver != $tnt_db_version && tnt_check_title_exists($tableName, "video_type_title", "Vimeo") == false) {
 			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => "Vimeo"));
 		}
-		else
-		{
-			//Do something
+
+		if ($installed_ver != $tnt_db_version && tnt_check_title_exists($tableName, "video_type_title", "DailyMotion") == false) {
+			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => "DailyMotion"));
 		}
+
+		update_option("tnt_video_list_manager_db_version", $tnt_db_version);
 	}
 ?>

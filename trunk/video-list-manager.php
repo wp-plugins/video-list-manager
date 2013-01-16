@@ -1,11 +1,11 @@
 <?php 
 /*
 Plugin Name: Video List Manager
-Plugin URI: http://qcvn.vn/video-list-manager
-Description: Video List Manager is the video list plugin for WordPress. Help you to add, edit, delete and manage youtube videos, separated by categories and display them by category. 
-Version: 1.2
+Plugin URI: http://videolistmanager.blogspot.com/
+Description: Video List Manager help you to add, edit, delete and manage YOUTUBE, VIMEO, DAILYMOTION videos, separated by categories, display them in colorbox by category, fit all layouts. 
+Version: 1.3
 Author: Tung Pham
-Author URI: http://qcvn.vn
+Author URI: http://videolistmanager.blogspot.com
 License: GPLv2
 */
 

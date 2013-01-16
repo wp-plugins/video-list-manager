@@ -60,6 +60,33 @@ function tntGetVimeoThumbLink($link)
 }
 
 /**
+ * DAILYMOTION
+ */
+
+/**
+ * Function get embed code from dailymotion link
+ */
+function tntGetDailymotionEmbedLink($link)
+{
+	$dmEmbedLink = 'http://www.dailymotion.com/embed/video/';
+	$l = explode('video/', $link);
+	$l1 = explode('_', $l[1]);
+	$embedCode = $l1[0];
+	$dmEmbedLink .= $embedCode;
+	return $dmEmbedLink;
+}
+
+/**
+ * Function get thumb link from dailymotion link
+ */
+function tntGetDailymotionThumbLink($link)
+{
+	$l = explode('video/', $link);
+	$dmThumbLink = $l[0].'thumbnail/video/'.$l[1];
+	return $dmThumbLink;
+}
+
+/**
  * Callback function for shortcode [tnt_video_list]
  */
 function tntSCVideoList($attr){
@@ -133,6 +160,10 @@ function tntSCVideoList($attr){
 			case "Vimeo" :
 				$linkEmbed = tntGetVimeoEmbedLink($video->video_link);
 				$thumbImg = tntGetVimeoThumbLink($video->video_link);
+				break;
+			case "DailyMotion" :
+				$linkEmbed = tntGetDailymotionEmbedLink($video->video_link); 
+				$thumbImg = tntGetDailymotionThumbLink($video->video_link);
 				break;			
 			default:
 				break;
