@@ -16,6 +16,7 @@ jQuery(document).ready(function($){
 		}
 		$(this).css('width', tntVideoItemWidth);
 		$(this).find("img").css('width', tntVideoItemWidth);
+		$(this).find("img").css('height', tntVideoItemWidth/1.77);
 	});
 
 	$('.tntVideoList .tntVideoItem a').click(function(e){
