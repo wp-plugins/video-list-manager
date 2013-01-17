@@ -158,7 +158,7 @@ class TNT_Video {
      * @return  object              List of videos
      */
 
-    public static function tntGetVideos($args = null)
+    public static function tntGetVideos($args = null, $keyword = null)
     {
         global $wpdb;
         $tableName1 = $wpdb->prefix."tnt_videos";
@@ -177,7 +177,29 @@ class TNT_Video {
         $sql = "SELECT video_id, video_title, video_link_type, video_link, video_cat, video_status, video_order, video_type_title, video_cat_title
                 FROM $tableName1, $tableName2, $tableName3
                 WHERE video_link_type = video_type_id AND video_cat = video_cat_id";
-        
+        if($keyword != null)
+        {
+            $keyword_analysis = explode(' ', $keyword);
+            $keyAmount = count($keyword_analysis);
+            if($keyAmount <= 1)
+            {
+                $sql .= " AND video_title like '%".$keyword."%'";
+            }
+            else
+            {
+                $sql .= " AND (";
+                $sql .= "video_title like '%".$keyword."%'";    
+                for($i=0; $i<count($keyword_analysis); $i++)
+                {
+                    if(strlen($keyword_analysis[$i]) >= 3)
+                    {
+                        $sql .= " OR video_title like '%".$keyword_analysis[$i]."%'";        
+                    }
+                }
+                $sql .= ")";
+            }
+        }
+
         if($videoID != 0)
         {
             $sql .= " AND video_id = $videoID";
