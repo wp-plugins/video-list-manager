@@ -3,7 +3,7 @@
 Plugin Name: Video List Manager
 Plugin URI: http://videolistmanager.blogspot.com/
 Description: Video List Manager help you to add, edit, delete and manage YOUTUBE, VIMEO, DAILYMOTION videos, separated by categories, display them in colorbox by category, fit all layouts. 
-Version: 1.3
+Version: 1.4
 Author: Tung Pham
 Author URI: http://videolistmanager.blogspot.com
 License: GPLv2
@@ -48,7 +48,6 @@ License: GPLv2
     register_activation_hook(__FILE__,'tnt_install_videos_type_table');
     register_activation_hook(__FILE__,'tnt_install_data_videos_type_table');
     register_activation_hook(__FILE__,'tnt_install_data_videos_cat_table');
-    register_activation_hook(__FILE__,'tnt_update_data_videos_type_table');
 
     /**
      * Message
@@ -77,4 +76,5 @@ License: GPLv2
      */
     require_once(TNT_INC_PATH . '/options.php');    
     register_activation_hook(__FILE__,'tnt_videos_create_options');
+    register_activation_hook(__FILE__,'tnt_update_databaseoption_videolistmanager');
 ?>

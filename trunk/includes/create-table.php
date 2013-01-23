@@ -8,7 +8,7 @@
  */
 
 	global $tnt_db_version;
-	$tnt_db_version = "1.3";
+	$tnt_db_version = "1.4";
 
 	/**
 	 * Create table : tnt_videos
@@ -149,22 +149,61 @@
 	}
 
 	/**
-	 * Update database : insert vimeo type
+	 * Update database and options (if needed)
 	 */
-	function tnt_update_data_videos_type_table(){
+	function tnt_update_databaseoption_videolistmanager(){
 		global $wpdb;
 		global $tnt_db_version;
 		$tableName = $wpdb->prefix."tnt_videos_type";
 		$installed_ver = get_option( "tnt_video_list_manager_db_version" );
 
+		//Add vimeo
 		if ($installed_ver != $tnt_db_version && tnt_check_title_exists($tableName, "video_type_title", "Vimeo") == false) {
 			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => "Vimeo"));
 		}
 
+		//Add dailymotion
 		if ($installed_ver != $tnt_db_version && tnt_check_title_exists($tableName, "video_type_title", "DailyMotion") == false) {
 			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => "DailyMotion"));
 		}
 
-		update_option("tnt_video_list_manager_db_version", $tnt_db_version);
+		if ($installed_ver != $tnt_db_version) {
+			$tableName1 = $wpdb->prefix."tnt_videos";
+			$sql = "CREATE TABLE $tableName1 (
+				  video_id int(11) NOT NULL AUTO_INCREMENT,
+				  video_title varchar(255) NOT NULL,
+				  video_link_type varchar(255) NOT NULL,
+				  video_link varchar(255) NOT NULL,
+				  video_cat int(11) NOT NULL DEFAULT '1',
+				  video_status tinyint(4) NOT NULL DEFAULT '1',
+				  video_order int(11) NOT NULL DEFAULT '100',
+				  date_created int(11) NOT NULL DEFAULT '0', 
+				  date_modified int(11) NOT NULL DEFAULT '0',
+				  user_id int(11) NOT NULL DEFAULT '0'
+				) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+			);";
+		
+			require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+			dbDelta($sql);
+			update_option("tnt_video_list_manager_db_version", $tnt_db_version);
+		}
+
+		//Update options
+		if ($installed_ver != $tnt_db_version) {
+			$tntOptions = get_option('tntVideoManageOptions');
+			$videoOptions = array(
+	            'limitPerPage'	     => $tntOptions['limitPerPage'],
+	            'limitAdminPerPage'  => $tntOptions['limitAdminPerPage'],
+	            'columnPerRow'	     => $tntOptions['columnPerRow'],
+	            'tntJquery'  	     => $tntOptions['tntJquery'],
+	            'tntColorbox'	     => $tntOptions['tntColorbox'],
+	            'skinColorbox'	     => $tntOptions['skinColorbox'],
+	            'videoWidth'         => $tntOptions['videoWidth'],
+	            'videoHeight'        => $tntOptions['videoHeight'],
+	            'videoOrder'		 => 'addingdate',
+	            'videoOrderBy'		 => 'desc'
+	        );
+	        update_option('tntVideoManageOptions', $videoOptions);
+		}
 	}
 ?>

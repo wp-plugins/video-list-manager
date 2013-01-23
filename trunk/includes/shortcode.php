@@ -111,6 +111,14 @@ function tntSCVideoList($attr){
 	$limitOption = $tntOptions['limitPerPage'];
 	$numLimit    = (isset($attr['limit'])) ? $attr['limit'] : $limitOption;
 
+	//Get Order and Order by
+	$arrVideoOrder 		= array('videoid','addingdate', 'editingdate', 'alphabet', 'ordernumber');
+	$arrVideoOrderBy 	= array('asc', 'desc');
+	$orderOption 		= $tntOptions['videoOrder'];
+	$orderbyOption 		= $tntOptions['videoOrderBy'];
+	$vidOrder 	 		= (isset($attr['order']) && in_array($attr['order'], $arrVideoOrder)) ? $attr['order'] : $orderOption;
+	$vidOrderBy 		= (isset($attr['orderby']) && in_array($attr['orderby'], $arrVideoOrderBy)) ? $attr['orderby'] : $orderbyOption;
+
 	//Get videos by catID
 	$args = array('catID' => $catID, 'isPublish' => 1);
 	$videoList = TNT_Video::tntGetVideos($args); 
@@ -128,7 +136,7 @@ function tntSCVideoList($attr){
         $p->adjacents(1); //No. of page away from the current page
         
         $pageMix = explode('/page/', $_SERVER["REQUEST_URI"]);
-        $page = (isset($pageMix[1])) ? substr($pageMix[1], 0, 1) : 1;
+        $page = (isset($pageMix[1])) ? (int)substr($pageMix[1], 0, 5) : 1;
         $p->page = ($page != null) ? $page : 1;
         $p->currentPage($p->page);
 
@@ -140,7 +148,24 @@ function tntSCVideoList($attr){
 	}
 
 	//Get videos by options
-	$args = array('catID' => $catID, 'isPublish' => 1, 'limitText' => $limit, 'orderBy' => 'video_order', 'order' => 'ASC');
+	switch ($vidOrder) {
+		case 'addingdate':
+			$vidOrder = 'date_created';
+			break;
+		case 'editingdate':
+			$vidOrder = 'date_modified';
+			break;
+		case 'alphabet':
+			$vidOrder = 'video_title';
+			break;
+		case 'ordernumber':
+			$vidOrder = 'video_order';
+			break;
+		default:
+			$vidOrder = 'video_id';
+			break;
+	}
+	$args = array('catID' => $catID, 'isPublish' => 1, 'limitText' => $limit, 'orderBy' => $vidOrder, 'order' => $vidOrderBy);
 	$videoListLimit = TNT_Video::tntGetVideos($args);
 
 	//Show template

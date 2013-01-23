@@ -12,9 +12,12 @@ class TNT_Video {
     private $videoCat;
     private $videoStatus;
     private $videoOrder;
+    private $dateCreated;
+    private $dateModified;
+    private $userID;
     
-    private $_getters = array('videoID', 'videoTitle', 'videoType', 'videoLink', 'videoCat', 'videoStatus', 'videoOrder');
-    private $_setters = array('videoID', 'videoTitle', 'videoType', 'videoLink', 'videoCat', 'videoStatus', 'videoOrder');
+    private $_getters = array('videoID', 'videoTitle', 'videoType', 'videoLink', 'videoCat', 'videoStatus', 'videoOrder', 'dateCreated', 'dateModified', 'userID');
+    private $_setters = array('videoID', 'videoTitle', 'videoType', 'videoLink', 'videoCat', 'videoStatus', 'videoOrder', 'dateCreated', 'dateModified', 'userID');
     
     public function __construct()
     {
@@ -25,6 +28,9 @@ class TNT_Video {
         $this->videoCat = 0;
         $this->videoStatus = 1;
         $this->videoOrder = 100;
+        $this->dateCreated = 0;
+        $this->dateModified = 0;
+        $this->userID = 0;
     } 
     
     public function __get($property) {
@@ -74,12 +80,18 @@ class TNT_Video {
                     'video_link'        =>  $this->videoLink,
                     'video_cat'         =>  $this->videoCat,
                     'video_status'      =>  $this->videoStatus,
-                    'video_order'       =>  $this->videoOrder
+                    'video_order'       =>  $this->videoOrder,
+                    'date_created'      =>  $this->dateCreated,
+                    'date_modified'     =>  $this->dateModified,
+                    'user_id'           =>  $this->userID
                 ), 
                 array( 
                     '%s', 
                     '%d',
                     '%s',
+                    '%d',
+                    '%d',
+                    '%d',
                     '%d',
                     '%d',
                     '%d' 
@@ -115,13 +127,19 @@ class TNT_Video {
                     'video_link'        =>  $this->videoLink,
                     'video_cat'         =>  $this->videoCat,
                     'video_status'      =>  $this->videoStatus,
-                    'video_order'       =>  $this->videoOrder
+                    'video_order'       =>  $this->videoOrder,
+                    'date_created'      =>  $this->dateCreated,
+                    'date_modified'     =>  $this->dateModified,
+                    'user_id'           =>  $this->userID
                 ), 
                 array('video_id' => $this->videoID),
                 array( 
                     '%s', 
                     '%d',
                     '%s',
+                    '%d',
+                    '%d',
+                    '%d',
                     '%d',
                     '%d',
                     '%d' 
@@ -174,26 +192,26 @@ class TNT_Video {
         $orderBy    = (isset($args["orderBy"])) ? $args["orderBy"] : null;
         $order      = (isset($args["order"])) ? $args["order"] : null;
 
-        $sql = "SELECT video_id, video_title, video_link_type, video_link, video_cat, video_status, video_order, video_type_title, video_cat_title
+        $sql = "SELECT $tableName1.video_id, $tableName1.video_title, $tableName1.video_link_type, $tableName1.video_link, $tableName1.video_cat, $tableName1.video_status, $tableName1.video_order, $tableName1.date_created, $tableName1.date_modified, $tableName1.user_id, $tableName2.video_type_title, $tableName3.video_cat_title
                 FROM $tableName1, $tableName2, $tableName3
-                WHERE video_link_type = video_type_id AND video_cat = video_cat_id";
+                WHERE $tableName1.video_link_type = $tableName2.video_type_id AND $tableName1.video_cat = $tableName3.video_cat_id";
         if($keyword != null)
         {
             $keyword_analysis = explode(' ', $keyword);
             $keyAmount = count($keyword_analysis);
             if($keyAmount <= 1)
             {
-                $sql .= " AND video_title like '%".$keyword."%'";
+                $sql .= " AND $tableName1.video_title like '%".$keyword."%'";
             }
             else
             {
                 $sql .= " AND (";
-                $sql .= "video_title like '%".$keyword."%'";    
+                $sql .= "$tableName1.video_title like '%".$keyword."%'";    
                 for($i=0; $i<count($keyword_analysis); $i++)
                 {
                     if(strlen($keyword_analysis[$i]) >= 3)
                     {
-                        $sql .= " OR video_title like '%".$keyword_analysis[$i]."%'";        
+                        $sql .= " OR $tableName1.video_title like '%".$keyword_analysis[$i]."%'";        
                     }
                 }
                 $sql .= ")";
@@ -202,22 +220,22 @@ class TNT_Video {
 
         if($videoID != 0)
         {
-            $sql .= " AND video_id = $videoID";
+            $sql .= " AND $tableName1.video_id = $videoID";
         }
         
         if($catID != 0)
         {
-            $sql .= " AND video_cat = $catID";
+            $sql .= " AND $tableName1.video_cat = $catID";
         }
         
         if($typeID != 0)
         {
-            $sql .= " AND video_link_type = $typeID";
+            $sql .= " AND $tableName1.video_link_type = $typeID";
         }
 
         if($isPublish != null)
         {
-            $sql .= " AND video_status = $isPublish";
+            $sql .= " AND $tableName1.video_status = $isPublish";
         }
 
         if($orderBy != null)
@@ -252,17 +270,20 @@ class TNT_Video {
         $sql = "";
         if($videoID != 0)
         {
-            $sql = "SELECT video_id, video_title, video_link_type, video_link, video_cat, video_status, video_order
+            $sql = "SELECT video_id, video_title, video_link_type, video_link, video_cat, video_status, video_order, date_created, date_modified, user_id
                     FROM $tableName 
                     WHERE video_id = $videoID";
             $video = $wpdb->get_row($sql);
-            $this->videoID     = $video->video_id;
-            $this->videoTitle  = $video->video_title;
-            $this->videoType   = $video->video_link_type;
-            $this->videoLink   = $video->video_link;
-            $this->videoCat    = $video->video_cat;
-            $this->videoStatus = $video->video_status;
-            $this->videoOrder  = $video->video_order;
+            $this->videoID      = $video->video_id;
+            $this->videoTitle   = $video->video_title;
+            $this->videoType    = $video->video_link_type;
+            $this->videoLink    = $video->video_link;
+            $this->videoCat     = $video->video_cat;
+            $this->videoStatus  = $video->video_status;
+            $this->videoOrder   = $video->video_order;
+            $this->dateCreated  = $video->date_created;
+            $this->dateModified = $video->date_modified;
+            $this->userID       = $video->user_id; 
         }
         else
         {
