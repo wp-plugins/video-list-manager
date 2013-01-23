@@ -11,18 +11,24 @@
 		$arrVideoLink 	= $_POST["vLink"];
 		$arrVideoStatus = $_POST["vStatus"];
 		$arrVideoOrder 	= $_POST["vOrder"];
+		$dateCreated 	= time();
+		$dateModified 	= time();
+		$userID 		= (int)$_POST['vUserID'];
 
 		$countVideo = count($arrVideoTitle);
 
 		for($i=0; $i<$countVideo; $i++)
 		{
 			$v = new TNT_Video();
-			$v->videoTitle 	= esc_html($arrVideoTitle[$i]);
-			$v->videoCat 	= $videoCat;
-			$v->videoType 	= $videoType;
-			$v->videoLink 	= esc_url($arrVideoLink[$i]);
-			$v->videoStatus = $arrVideoStatus[$i];
-			$v->videoOrder 	= $arrVideoOrder[$i];
+			$v->videoTitle 	 = esc_html($arrVideoTitle[$i]);
+			$v->videoCat 	 = $videoCat;
+			$v->videoType 	 = $videoType;
+			$v->videoLink 	 = esc_url($arrVideoLink[$i]);
+			$v->videoStatus  = $arrVideoStatus[$i];
+			$v->videoOrder 	 = $arrVideoOrder[$i];
+			$v->dateCreated  = $dateCreated;
+			$v->dateModified = $dateModified;
+			$v->userID 		 = $userID;
 			$v->tntInsertVideo();
 		}
 		
@@ -48,14 +54,15 @@
 		$v = new TNT_Video();
 		$v->tntGetVideo($videoID);
 
-		$v->videoID 	= $videoID;
-		$v->videoTitle 	= esc_html($_POST["vTitle"]);
-		$v->videoCat 	= $_POST["vCat"];
-		$v->videoType 	= $_POST["vLinkType"];
-		$v->videoLink 	= esc_url($_POST["vLink"]);
-		$v->videoStatus = ($_POST["vStatus"]) ? $_POST["vStatus"] : "0";
-		$v->videoOrder 	= $_POST["vOrder"];
-
+		$v->videoID 	 = $videoID;
+		$v->videoTitle 	 = esc_html($_POST["vTitle"]);
+		$v->videoCat 	 = $_POST["vCat"];
+		$v->videoType 	 = $_POST["vLinkType"];
+		$v->videoLink 	 = esc_url($_POST["vLink"]);
+		$v->videoStatus  = ($_POST["vStatus"]) ? $_POST["vStatus"] : "0";
+		$v->videoOrder 	 = $_POST["vOrder"];
+		$v->dateModified = time(); 
+		
 		if($v->tntUpdateVideo() >= 0)
 		{
 			// wp_die("Edited Sucessfully!");
@@ -256,6 +263,8 @@
 		$skinColorbox 		= $_POST['skinColorbox'];
 		$videoWidth 		= $_POST['videoWidth'];
 		$videoHeight 		= $_POST['videoHeight'];
+		$videoOrder 		= $_POST['videoOrder'];
+		$videoOrderBy 		= $_POST['videoOrderBy'];
 
 		if($videoLimit != "")
 		{
@@ -267,7 +276,9 @@
 				'tntColorbox'			=> $tntColorbox,	
 				'skinColorbox'			=> $skinColorbox,
 				'videoWidth'			=> $videoWidth,
-				'videoHeight'			=> $videoHeight
+				'videoHeight'			=> $videoHeight,
+				'videoOrder' 			=> $videoOrder,
+				'videoOrderBy'			=> $videoOrderBy
 			);
 			update_option('tntVideoManageOptions', $videoOptions);
 

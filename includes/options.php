@@ -16,9 +16,9 @@
             'tntColorbox'	     => 1,
             'skinColorbox'	     => 1,
             'videoWidth'         => 480,
-            'videoHeight'        => 360 		
+            'videoHeight'        => 360
         );
 
-        add_option('tntVideoManageOptions', $videoOptions);
+        update_option('tntVideoManageOptions', $videoOptions);
     }
  ?>

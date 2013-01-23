@@ -65,12 +65,17 @@ function tnt_video_manage(){
 						<td width="34%">
 							Order by: 
 							<select name="orderBy">
+								<option <?php echo ($orderBy == 'date_created') ? "selected" : "" ?> value="date_created">Created Date</option>
+								<option <?php echo ($orderBy == 'date_modified') ? "selected" : "" ?> value="date_modified">Editing Date</option>
 								<option <?php echo ($orderBy == 'video_title') ? "selected" : "" ?> value="video_title">Title</option>
 								<option <?php echo ($orderBy == 'video_link_type') ? "selected" : "" ?> value="video_link_type">Type</option>
 								<option <?php echo ($orderBy == 'video_status') ? "selected" : "" ?> value="video_status">Status</option>
 								<option <?php echo ($orderBy == 'video_order') ? "selected" : "" ?> value="video_order">Order Number</option>
 							</select>
-							<input type="hidden" name="order" value="<?php echo ($order == 'ASC') ? 'DESC' : 'ASC' ?>" />
+							<select name="order">
+								<option <?php echo ($order == 'ASC') ? "selected" : "" ?> value="ASC">Ascending</option>
+								<option <?php echo ($order == 'DESC') ? "selected" : "" ?> value="DESC">Descending</option>
+							</select>
 							<input type="submit" value="Filter" class="button-secondary" />
 						</td>
 					</tr>
@@ -121,7 +126,9 @@ function tnt_video_manage(){
 						<th>Type</th>
 						<th>Link</th>
 						<th>Status</th>
-						<th>Order Num</th>
+						<th width="50">Order Num</th>
+						<th width="100">Created Date (GMT + 0:00)</th>
+						<th width="100">Last Modified (GMT + 0:00)</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -135,6 +142,8 @@ function tnt_video_manage(){
 						<th>Link</th>
 						<th>Status</th>
 						<th>Order Num</th>
+						<th>Created Date (GMT +0)</th>
+						<th>Last Modified (GMT +0)</th>
 						<th>Action</th>
 					</tr>
 				</tfoot>
@@ -148,10 +157,26 @@ function tnt_video_manage(){
 								<td><a href="<?php echo admin_url() ?>admin.php?page=tnt_video_edit_page&videoID=<?php echo $tntV->video_id; ?>"><b><?php echo $tntV->video_id ?></b></a></td>
 								<td><b><a href="<?php echo admin_url() ?>admin.php?page=tnt_video_edit_page&videoID=<?php echo $tntV->video_id; ?>"><?php echo $tntV->video_title ?></a></b></td>
 								<td><?php echo $tntV->video_cat_title ?></td>
-								<td><?php echo $tntV->video_type_title ?></td>
-								<td><a href="<?php echo $tntV->video_link ?>"><?php echo $tntV->video_link ?></a></td>
+								<td>
+									<?php 
+										switch ($tntV->video_type_title) {
+											case 'DailyMotion':
+												echo '<img src="'.TNT_IMG_URL.'/dailymotion.gif" alt="'.$tntV->video_type_title.'" title="'.$tntV->video_type_title.'" />';
+												break;
+											case 'Vimeo':
+												echo '<img src="'.TNT_IMG_URL.'/vimeo.gif" alt="'.$tntV->video_type_title.'" title="'.$tntV->video_type_title.'" />';
+												break;
+											default:
+												echo '<img src="'.TNT_IMG_URL.'/utube.gif" alt="'.$tntV->video_type_title.'" title="'.$tntV->video_type_title.'" />';
+												break;
+										}
+									 ?>
+								</td>
+								<td><a href="<?php echo $tntV->video_link ?>" target=_blank>Click to watch</a></td>
 								<td><?php echo ($tntV->video_status) ? '<img src="'.TNT_IMG_URL.'/publish.gif" alt="Published" />' : '<img src="'.TNT_IMG_URL.'/unpublish.gif" alt="Unpublished" />' ?></td>
 								<td><?php echo $tntV->video_order ?></td>
+								<td><?php echo date('Y-m-d H:i:s', $tntV->date_created); ?></td>
+								<td><?php echo date('Y-m-d H:i:s', $tntV->date_modified); ?></td>
 								<td>
 									<a href="<?php echo admin_url() ?>admin.php?page=tnt_video_edit_page&videoID=<?php echo $tntV->video_id; ?>" class="button-highlighted">Edit</a> 
 									<a href="<?php echo admin_url() ?>admin.php?page=tnt_video_del_page&videoID=<?php echo $tntV->video_id; ?>" class="button-highlighted">Delete</a>
@@ -242,6 +267,10 @@ function tnt_video_add(){
 			 ?>
 			<form id="addVideoForm" method="POST" action="">
 				<div id="message" class="errorContainer error dpn"></div>
+				<?php 
+					$currentUser = wp_get_current_user();
+				?>
+				<input type="hidden" name="vUserID" value="<?php echo $currentUser->ID; ?>" />
 				<table class="borderB form-table">
 					<tr valign="top">
 						<th scope="row"><label for="vCat">Select Category</label></th>
@@ -336,6 +365,10 @@ function tnt_video_edit(){
 			 ?>
 			<form id="editVideoForm" method="POST" action="">
 				<input type="hidden" name="vID" value="<?php echo $v->videoID ?>" />
+				<?php 
+					$currentUser = wp_get_current_user();
+				?>
+				<input type="hidden" name="vUserID" value="<?php echo $currentUser->ID; ?>" />
 				<table class="form-table">
 					<tr valign="top">
 						<th scope="row"><label for="vCat">Category</label></th>
@@ -826,6 +859,20 @@ function tnt_video_option(){
 						<th scope="row"><label for="videoColumn">Column(s) per row</label></th>
 						<td>
 							<input type="text" size="50" name="videoColumn" value="<?php echo $tntOptions['columnPerRow']; ?>" />
+						</td>
+					</tr>
+					<tr valign="top">
+						<th scope="row"><label for="videoOrder">Default order</label></th>
+						<td>
+							<select name="videoOrder">
+								<option <?php echo ($tntOptions['videoOrder'] == 'videoid') ? 'selected' : ""; ?> value="videoid">Video ID</option>
+								<option <?php echo ($tntOptions['videoOrder'] == 'addingdate') ? 'selected' : ""; ?> value="addingdate">Adding Date</option>
+								<option <?php echo ($tntOptions['videoOrder'] == 'editingdate') ? 'selected' : ""; ?> value="editingdate">Editing Date</option>
+								<option <?php echo ($tntOptions['videoOrder'] == 'alphabet') ? 'selected' : ""; ?> value="alphabet">Alphabet</option>
+								<option <?php echo ($tntOptions['videoOrder'] == 'ordernumber') ? 'selected' : ""; ?> value="ordernumber">Order Number</option>
+							</select>
+							<label for="videoOrderByASC"><input type="radio" name="videoOrderBy" <?php echo ($tntOptions['videoOrderBy'] == 'asc') ? 'checked' : ""; ?> id="videoOrderByASC" value="asc" /> Ascending</label>
+							<label for="videoOrderByDESC"><input type="radio" name="videoOrderBy" <?php echo ($tntOptions['videoOrderBy'] == 'desc') ? 'checked' : ""; ?> id="videoOrderByDESC" value="desc" /> Descending</label>
 						</td>
 					</tr>
 					<tr valign="top">

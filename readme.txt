@@ -4,22 +4,21 @@ Donate link: http://videolistmanager.blogspot.com/
 Tags: video, youtube, vimeo, dailymotion, video list, video manager, video list manager 
 Requires at least: 3.0.1
 Tested up to: 3.5
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Add, edit, delete and manage YOUTUBE, VIMEO videos, separated by categories and display them by category. 
+Add, edit, delete and manage YOUTUBE, VIMEO, DAILYMOTION videos, separated by categories and display them by category, fit all layouts.
 
 == Description ==
 
-Video List Manager is the video list plugin for WordPress. It helps you to add, edit, delete and manage YOUTUBE, VIMEO videos, separated by categories and display them by category automaticly.
+Video List Manager is the video list plugin for WordPress. It helps you to add, edit, delete and manage YOUTUBE, VIMEO, DAILYMOTION videos, separated by categories and display them by category automaticly.
 
 Features:
 
-* Support Youtube, Vimeo Video
+* Support Youtube, Vimeo, Dailymotion Video
 * Add/Edit/Delete/Manage Video 
 * Add/Edit/Delete/Manage Category
-* Config Settings 
 * Using jquery colorbox to show video, support 5 colorbox skins.
 * Fit all layouts
 
@@ -37,12 +36,15 @@ To Show a videos list by category id you use this shordcode in your post/page: [
 
 You also can use some following attributes to custom videos list:
 
-* col  	 : numbers of column you want to show
-* limit	 : numbers of video you want show per page
-* width	 : width of video in list
-* height : height of video in list
+* col  	 : numbers of column you want to show. Default: 2
+* limit	 : numbers of video you want show per page. Default: 4
+* width	 : width of video in list (Unit: px). Default: 480 
+* height : height of video in list (Unit: px). Default: 360
+* order  : sort the results by: Video ID (keyword: videoid), Adding Date (keyword: addingdate), Editing Date (keyword: editingdate), Alphabet (keyword: alphabet) or Order Number (keyword: ordernumber). Default: Adding Date 
+* orderby: ascending or descending (keywords: asc, desc). Default: desc
+* Ex: [tnt_video_list id="1" col="4" limit="10" width="400" height="300" order="alphabet" orderby="asc"]
 
-Note: Need to enable the permalink to run this plugin
+Note: Need to enable the permalink (Settings --> Permalinks) to run this plugin
 
 Tutorial: http://www.youtube.com/watch?v=R_0BmfKC1Jw
 
@@ -50,8 +52,7 @@ Tutorial: http://www.youtube.com/watch?v=R_0BmfKC1Jw
 
 1. Download, install, and activate the Video List Manager plugin.
 
-2. From your WordPress Dashboard, go to Video List Manager > Add Video.
-To add cateogory, go to Video List Manager > Add Cateogory
+2. From your WordPress Dashboard, go to Video List Manager > Add Video. To add cateogory, go to Video List Manager > Add Cateogory
 
 3. Go to a post/page, use shortcodes. 
 
@@ -85,15 +86,26 @@ No Frequently Asked Questions
 = 1.3 =
 * Support Dailymotion Video
 
+= 1.4 =
+* fix bug pagination
+* allow to sort results by many ways
+* add created date, modified date
+
 == Upgrade Notice ==
 
 = 1.0 =
 * No notice
 
 = 1.1 =
-* If the plugin don't auto insert video type "Vimeo", you should insert manually a Vimeo type in table "wp_tnt_videos_type"
+* About database: If the plugin don't auto insert video type "Vimeo", you should insert manually a Vimeo type in table "wp_tnt_videos_type" 
 
 = 1.2 =
+* No notice
+
+= 1.3 =
+* No notice
+
+= 1.4 =
 * No notice
 
 == Arbitrary section ==
