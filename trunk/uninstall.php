@@ -6,6 +6,7 @@ if(!defined('WP_UNINSTALL_PLUGIN') )
 }
 
 delete_option("tntVideoManageOptions");
+delete_option("tnt_video_list_manager_db_version");
 
 //delete any options, tables, etc the plugin created
 global $wpdb;
