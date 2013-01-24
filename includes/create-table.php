@@ -37,6 +37,7 @@
 		
 		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 		dbDelta($sql); 
+		update_option("tnt_video_list_manager_db_version", $tnt_db_version);
 	}
 
 	/**
@@ -57,6 +58,7 @@
 
 		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 		dbDelta($sql); 
+		update_option("tnt_video_list_manager_db_version", $tnt_db_version);
 	}
 
 	/**
@@ -75,6 +77,7 @@
 
 		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 		dbDelta($sql); 
+		update_option("tnt_video_list_manager_db_version", $tnt_db_version);
 	}
 
 	/**
