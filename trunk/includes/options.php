@@ -16,7 +16,9 @@
             'tntColorbox'	     => 1,
             'skinColorbox'	     => 1,
             'videoWidth'         => 480,
-            'videoHeight'        => 360
+            'videoHeight'        => 360,
+            'videoOrder'         => 'addingdate',
+            'videoOrderBy'       => 'desc'
         );
 
         update_option('tntVideoManageOptions', $videoOptions);
