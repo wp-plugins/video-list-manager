@@ -15,7 +15,7 @@
 	 */
 	function tnt_install_videos_table(){
 		global $wpdb;
-
+		global $tnt_db_version;
 		$tableName = $wpdb->prefix."tnt_videos";
 		$sql = "CREATE TABLE IF NOT EXISTS $tableName (
 			  video_id int(11) NOT NULL AUTO_INCREMENT,
@@ -45,7 +45,7 @@
 	 */
 	function tnt_install_videos_cat_table(){
 		global $wpdb;
-
+		global $tnt_db_version;
 		$tableName = $wpdb->prefix."tnt_videos_cat";
 		$sql = "CREATE TABLE IF NOT EXISTS $tableName (
 			  video_cat_id int(11) NOT NULL AUTO_INCREMENT,
@@ -66,7 +66,7 @@
 	 */
 	function tnt_install_videos_type_table(){
 		global $wpdb;
-
+		global $tnt_db_version;
 		$tableName = $wpdb->prefix."tnt_videos_type";
 		$sql = "CREATE TABLE IF NOT EXISTS $tableName (
 			  video_type_id int(11) NOT NULL AUTO_INCREMENT,
@@ -125,6 +125,7 @@
 	 */
 	function tnt_install_data_videos_type_table(){
 		global $wpdb;
+		global $tnt_db_version;
 		$tableName = $wpdb->prefix."tnt_videos_type";
 		$firstTitle = tnt_check_title_exists($tableName, "video_type_title", "Youtube");
 		$secondTitle = tnt_check_title_exists($tableName, "video_type_title", "Vimeo");
@@ -141,6 +142,7 @@
 		{
 			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => 'DailyMotion'));
 		}
+		update_option("tnt_video_list_manager_db_version", $tnt_db_version);
 	}
 
 	/**
@@ -166,7 +168,6 @@
 		global $tnt_db_version;
 		$tableName = $wpdb->prefix."tnt_videos_type";
 		$installed_ver = get_option( "tnt_video_list_manager_db_version" );
-		echo $installed_ver; exit();
 
 		//Add vimeo
 		if ($installed_ver != $tnt_db_version && tnt_check_title_exists($tableName, "video_type_title", "Vimeo") == false) {
