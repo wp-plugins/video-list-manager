@@ -19,6 +19,6 @@
             'videoHeight'        => 360
         );
 
-        update_option('tntVideoManageOptions', $videoOptions);
+        add_option('tntVideoManageOptions', $videoOptions);
     }
  ?>

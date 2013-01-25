@@ -15,7 +15,7 @@
 	 */
 	function tnt_install_videos_table(){
 		global $wpdb;
-
+		global $tnt_db_version;
 		$tableName = $wpdb->prefix."tnt_videos";
 		$sql = "CREATE TABLE IF NOT EXISTS $tableName (
 			  video_id int(11) NOT NULL AUTO_INCREMENT,
@@ -41,7 +41,7 @@
 	 */
 	function tnt_install_videos_cat_table(){
 		global $wpdb;
-
+		global $tnt_db_version;
 		$tableName = $wpdb->prefix."tnt_videos_cat";
 		$sql = "CREATE TABLE IF NOT EXISTS $tableName (
 			  video_cat_id int(11) NOT NULL AUTO_INCREMENT,
@@ -61,7 +61,7 @@
 	 */
 	function tnt_install_videos_type_table(){
 		global $wpdb;
-
+		global $tnt_db_version;
 		$tableName = $wpdb->prefix."tnt_videos_type";
 		$sql = "CREATE TABLE IF NOT EXISTS $tableName (
 			  video_type_id int(11) NOT NULL AUTO_INCREMENT,
@@ -87,7 +87,7 @@
 	{
 		$check = true;
 		global $wpdb;
-		$id = $wpdb->get_var( $wpdb->prepare( "SELECT $fieldID FROM $tableName WHERE $fieldID = $fieldValue;" ) );
+		$id = $wpdb->get_var("SELECT $fieldID FROM $tableName WHERE $fieldID = $fieldValue;");
 		if($id == null){
 			$check = false;
 		}
@@ -107,7 +107,7 @@
 	{
 		$check = true;
 		global $wpdb;
-		$title = $wpdb->get_var( $wpdb->prepare( "SELECT $fieldTitle FROM $tableName WHERE $fieldTitle like '$fieldValue';" ) );
+		$title = $wpdb->get_var("SELECT $fieldTitle FROM $tableName WHERE $fieldTitle like '$fieldValue';");
 		if($title == null){
 			$check = false;
 		}
@@ -119,6 +119,7 @@
 	 */
 	function tnt_install_data_videos_type_table(){
 		global $wpdb;
+		global $tnt_db_version;
 		$tableName = $wpdb->prefix."tnt_videos_type";
 		$firstTitle = tnt_check_title_exists($tableName, "video_type_title", "Youtube");
 		$secondTitle = tnt_check_title_exists($tableName, "video_type_title", "Vimeo");

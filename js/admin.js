@@ -1,12 +1,10 @@
 jQuery(document).ready(function($){
 	//Set width for each element .tntVideoItem
-	var tntMenuUl = $('li.toplevel_page_tnt_video_manage_page .wp-submenu .wp-submenu-wrap ul');
-	tntMenuUl.find('li').eq(2).css('display', 'none');
-	tntMenuUl.find('li').eq(3).css('display', 'none');
-	tntMenuUl.find('li').eq(6).css('display', 'none');
-	tntMenuUl.find('li').eq(7).css('display', 'none');
-	tntMenuUl.find('li').eq(10).css('display', 'none');
-	tntMenuUl.find('li').eq(11).css('display', 'none');
+	var tntMenuUl = $('li.toplevel_page_tnt_video_manage_page');
+	tntMenuUl.find('a[href*="tnt_video_edit_page"]').css('display', 'none');
+	tntMenuUl.find('a[href*="tnt_video_del_page"]').css('display', 'none');
+	tntMenuUl.find('a[href*="tnt_video_cat_edit_page"]').css('display', 'none');
+	tntMenuUl.find('a[href*="tnt_video_cat_del_page"]').css('display', 'none');
 
 	var tntInfoVideoTable = '<table class="infoVideo borderDB form-table">';
 	tntInfoVideoTable += '<tbody><tr valign="top">';
