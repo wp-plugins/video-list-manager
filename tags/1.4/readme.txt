@@ -4,7 +4,7 @@ Donate link: http://videolistmanager.blogspot.com/
 Tags: video, youtube, vimeo, dailymotion, video list, video manager, video list manager 
 Requires at least: 3.0.1
 Tested up to: 3.5
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,7 +94,7 @@ No Frequently Asked Questions
 == Upgrade Notice ==
 
 = 1.0 =
-* No notice
+* Please enable permalinks (Settings --> Permalinks) before activating this plugin.
 
 = 1.1 =
 * About database: If the plugin don't auto insert video type "Vimeo", you should insert manually a Vimeo type in table "wp_tnt_videos_type" 
@@ -106,7 +106,7 @@ No Frequently Asked Questions
 * No notice
 
 = 1.4 =
-* No notice
+* This version have a update database. So after updating, please deactive it and reactive it once more to plugin automaticly add necessary fields. 
 
 == Arbitrary section ==
 
