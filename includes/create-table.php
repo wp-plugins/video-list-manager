@@ -25,9 +25,6 @@
 			  video_cat int(11) NOT NULL DEFAULT '1',
 			  video_status tinyint(4) NOT NULL DEFAULT '1',
 			  video_order int(11) NOT NULL DEFAULT '100',
-			  date_created int(11) NOT NULL DEFAULT '0', 
-			  date_modified int(11) NOT NULL DEFAULT '0',
-			  user_id int(11) NOT NULL DEFAULT '0',
 			  PRIMARY KEY (video_id),
 			  KEY video_link_type (video_link_type),
 			  KEY video_cat (video_cat),
@@ -37,7 +34,6 @@
 		
 		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 		dbDelta($sql); 
-		update_option("tnt_video_list_manager_db_version", $tnt_db_version);
 	}
 
 	/**
@@ -58,7 +54,6 @@
 
 		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 		dbDelta($sql); 
-		update_option("tnt_video_list_manager_db_version", $tnt_db_version);
 	}
 
 	/**
@@ -77,7 +72,6 @@
 
 		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 		dbDelta($sql); 
-		update_option("tnt_video_list_manager_db_version", $tnt_db_version);
 	}
 
 	/**
@@ -93,7 +87,7 @@
 	{
 		$check = true;
 		global $wpdb;
-		$id = $wpdb->get_var( $wpdb->prepare( "SELECT $fieldID FROM $tableName WHERE $fieldID = $fieldValue;" ) );
+		$id = $wpdb->get_var("SELECT $fieldID FROM $tableName WHERE $fieldID = $fieldValue;");
 		if($id == null){
 			$check = false;
 		}
@@ -113,7 +107,7 @@
 	{
 		$check = true;
 		global $wpdb;
-		$title = $wpdb->get_var( $wpdb->prepare( "SELECT $fieldTitle FROM $tableName WHERE $fieldTitle like '$fieldValue';" ) );
+		$title = $wpdb->get_var("SELECT $fieldTitle FROM $tableName WHERE $fieldTitle like '$fieldValue';");
 		if($title == null){
 			$check = false;
 		}
@@ -138,11 +132,6 @@
 		{
 			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => 'Vimeo'));
 		}
-		if($thirdTitle == false)
-		{
-			$rows_affected = $wpdb->insert( $tableName, array( 'video_type_title' => 'DailyMotion'));
-		}
-		update_option("tnt_video_list_manager_db_version", $tnt_db_version);
 	}
 
 	/**
