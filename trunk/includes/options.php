@@ -16,11 +16,9 @@
             'tntColorbox'	     => 1,
             'skinColorbox'	     => 1,
             'videoWidth'         => 480,
-            'videoHeight'        => 360,
-            'videoOrder'         => 'addingdate',
-            'videoOrderBy'       => 'desc'
+            'videoHeight'        => 360
         );
 
-        update_option('tntVideoManageOptions', $videoOptions);
+        add_option('tntVideoManageOptions', $videoOptions);
     }
  ?>
