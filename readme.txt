@@ -4,7 +4,7 @@ Donate link: http://videolistmanager.blogspot.com/
 Tags: video, youtube, vimeo, dailymotion, video list, video manager, video list manager 
 Requires at least: 3.0.1
 Tested up to: 3.5
-Stable tag: 1.4
+Stable tag: 1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -90,6 +90,10 @@ No Frequently Asked Questions
 * fix bug pagination
 * allow to sort results by many ways
 * add created date, modified date
+
+= 1.5 =
+* fix bug pagination
+* remove donation link
 
 == Upgrade Notice ==
 

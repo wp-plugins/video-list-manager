@@ -136,10 +136,25 @@ function tntSCVideoList($attr){
         $p->adjacents(1); //No. of page away from the current page
         
         $pageMix = explode('/page/', $_SERVER["REQUEST_URI"]);
-        $page = (isset($pageMix[1])) ? (int)substr($pageMix[1], 0, 5) : 1;
+        $page = '';
+        if(isset($pageMix[1]))
+        {
+        	$page = (int)substr($pageMix[1], 0, 5);
+        }
+        else
+        {
+        	if($_GET['paged'] != '')
+        	{
+        		$page = $_GET['paged'];
+        	} 	
+        	else
+        	{
+        		$page = 1;
+        	}
+        }
+        
         $p->page = ($page != null) ? $page : 1;
-        $p->currentPage($p->page);
-
+        
         //Query for limit paging
         $limit = "LIMIT " . ($p->page - 1) * $p->limit  . ", " . $p->limit;
 	         

@@ -28,6 +28,6 @@
 	    add_submenu_page('tnt_video_manage_page', 'Delete Category', 'Delete Category', 'manage_options', 'tnt_video_cat_del_page', 'tnt_video_cat_del');
 
 	    add_submenu_page('tnt_video_manage_page', 'Video Manage Settings', 'Settings', 'manage_options', 'tnt_video_option_page', 'tnt_video_option');
-	    add_submenu_page('tnt_video_manage_page', 'Donation', 'Donation', 'manage_options', 'tnt_video_donation_page', 'tnt_video_donation');
+	    add_submenu_page('tnt_video_manage_page', 'Rate it', 'Rate it', 'manage_options', 'tnt_video_rate_page', 'tnt_video_rate');
 	}
  ?>
