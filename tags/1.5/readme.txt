@@ -112,6 +112,9 @@ No Frequently Asked Questions
 = 1.4 =
 * This version have a update database. So after updating, please deactive it and reactive it once more to plugin automaticly add necessary fields. 
 
+= 1.5 =
+* No notice
+
 == Arbitrary section ==
 
 CREDIT
