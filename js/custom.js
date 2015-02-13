@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
 		$(this).find("img").css('height', tntVideoItemWidth/1.77);
 	});
 
-	$('.tntVideoList .tntVideoItem a').click(function(e){
+	$('.tntVideoList .tntVideoItem a.videoLink').click(function(e){
 		e.preventDefault();
 		$(this).colorbox({iframe:true, width:tntVideoWidth, height:tntVideoHeight});
 	});

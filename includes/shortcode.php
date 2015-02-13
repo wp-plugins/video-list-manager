@@ -55,8 +55,9 @@ function tntGetVimeoThumbLink($link)
 {
 	$l = explode('vimeo.com/', $link);
 	$embedCode = $l[1];
-	$hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$embedCode.php"));
-	return $hash[0]['thumbnail_large'];
+	$xmlVimeo = simplexml_load_file("http://vimeo.com/api/v2/video/$embedCode.xml");
+    $thumbnail = $xmlVimeo->video->thumbnail_large;
+	return $thumbnail;
 }
 
 /**

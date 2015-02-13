@@ -3,7 +3,7 @@
 Plugin Name: Video List Manager
 Plugin URI: http://videolistmanager.blogspot.com/
 Description: Video List Manager help you to add, edit, delete and manage YOUTUBE, VIMEO, DAILYMOTION videos, separated by categories, display them in colorbox by category, fit all layouts. 
-Version: 1.5
+Version: 1.6
 Author: Tung Pham
 Author URI: http://videolistmanager.blogspot.com
 License: GPLv2
