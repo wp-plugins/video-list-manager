@@ -13,3 +13,5 @@
 .pagiWrap .pagination span.current{background: black; color: #fff;}
 .pagiWrap .pagination span.disabled{background: none; color: #aaa;}
 .pagiWrap .pagination a.next{}
+
+#cboxLoadedContent iframe{margin-bottom:0;}

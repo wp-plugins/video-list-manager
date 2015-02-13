@@ -108,9 +108,17 @@
 					$view .= '<div class="tntVideoItem">';
 				}
 				$view .= '<h3>'. $video['videoTitle'] . '</h3>';
-				$view .= '<a href="'.$video['videoEmbed'].'" title="'.$video['videoTitle'].'">';
+				$view .= '<a class="videoLink" href="'.$video['videoEmbed'].'" title="'.$video['videoTitle'].'">';
 				$view .= '<img src="'.$video['videoThumb'].'" />';
 				$view .= '</a>';
+				$view .= '<div class="tntVideoSocialShare">';
+				$view .= '<ul>';
+				$view .= '<li><a href="https://www.facebook.com/sharer/sharer.php?u='.$video['videoEmbed'].'" target="_blank">Share on Facebook</a></li>';
+				$view .= '<li><a href="https://twitter.com/home?status='.$video['videoEmbed'].'" target="_blank">Share on Twitter</a></li>';
+				$view .= '<li><a href="https://plus.google.com/share?url='.$video['videoEmbed'].'" target="_blank">Share on Google+</a></li>';
+				$view .= '<li><a href="https://pinterest.com/pin/create/button/?url='.$video['videoEmbed'].'&media='.$video['videoThumb'].'&description=" target="_blank">Share on Pinterest</a></li>';
+				$view .= '</ul>';
+				$view .= '</div>';
 				$view .= '</div>';
 				if($i % $columns == 0)
 				{

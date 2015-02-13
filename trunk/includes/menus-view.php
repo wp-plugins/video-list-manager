@@ -866,8 +866,8 @@ function tnt_video_option(){
 						<td>
 							<select name="videoOrder">
 								<option <?php echo ($tntOptions['videoOrder'] == 'videoid') ? 'selected' : ""; ?> value="videoid">Video ID</option>
-								<option <?php echo ($tntOptions['videoOrder'] == 'addingdate') ? 'selected' : ""; ?> value="addingdate">Adding Date</option>
-								<option <?php echo ($tntOptions['videoOrder'] == 'editingdate') ? 'selected' : ""; ?> value="editingdate">Editing Date</option>
+								<option <?php echo ($tntOptions['videoOrder'] == 'addingdate') ? 'selected' : ""; ?> value="addingdate">Created Date</option>
+								<option <?php echo ($tntOptions['videoOrder'] == 'editingdate') ? 'selected' : ""; ?> value="editingdate">Modified Date</option>
 								<option <?php echo ($tntOptions['videoOrder'] == 'alphabet') ? 'selected' : ""; ?> value="alphabet">Alphabet</option>
 								<option <?php echo ($tntOptions['videoOrder'] == 'ordernumber') ? 'selected' : ""; ?> value="ordernumber">Order Number</option>
 							</select>
