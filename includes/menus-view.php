@@ -918,6 +918,13 @@ function tnt_video_option(){
 							<input type="submit" name="reset" value="Reset" class="button-secondary">
 						</td>
 					</tr>
+					<tr valign="top">
+						<th scope="row"><label for="tntSocialFeature">Enable Social Feature</label></th>
+						<td>
+							<?php echo ($tntOptions['socialFeature']); ?>
+							<input type="checkbox" name="tntSocialFeature" <?php echo ($tntOptions['socialFeature']) ? "checked" : "" ?> value="1" />
+						</td>
+					</tr>
 				</table>
 			</form>
 		</div>

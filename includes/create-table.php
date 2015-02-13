@@ -8,7 +8,7 @@
  */
 
 	global $tnt_db_version;
-	$tnt_db_version = "1.4";
+	$tnt_db_version = "1.5";
 
 	/**
 	 * Create table : tnt_videos
@@ -193,16 +193,21 @@
 		if ($installed_ver != $tnt_db_version) {
 			$tntOptions = get_option('tntVideoManageOptions');
 			$videoOptions = array(
-	            'limitPerPage'	     => $tntOptions['limitPerPage'],
-	            'limitAdminPerPage'  => $tntOptions['limitAdminPerPage'],
-	            'columnPerRow'	     => $tntOptions['columnPerRow'],
-	            'tntJquery'  	     => $tntOptions['tntJquery'],
-	            'tntColorbox'	     => $tntOptions['tntColorbox'],
-	            'skinColorbox'	     => $tntOptions['skinColorbox'],
-	            'videoWidth'         => $tntOptions['videoWidth'],
-	            'videoHeight'        => $tntOptions['videoHeight'],
-	            'videoOrder'		 => 'addingdate',
-	            'videoOrderBy'		 => 'desc'
+				'limitPerPage'      => $tntOptions['limitPerPage'],
+				'limitAdminPerPage' => $tntOptions['limitAdminPerPage'],
+				'columnPerRow'      => $tntOptions['columnPerRow'],
+				'tntJquery'         => $tntOptions['tntJquery'],
+				'tntColorbox'       => $tntOptions['tntColorbox'],
+				'skinColorbox'      => $tntOptions['skinColorbox'],
+				'videoWidth'        => $tntOptions['videoWidth'],
+				'videoHeight'       => $tntOptions['videoHeight'],
+				'videoOrder'        => 'addingdate',
+				'videoOrderBy'      => 'desc',
+				'socialFeature'     => $tntOptions['socialFeature'],
+				'socialFeatureFB'   => $tntOptions['socialFeatureFB'],
+				'socialFeatureTW'   => $tntOptions['socialFeatureTW'],
+				'socialFeatureG'    => $tntOptions['socialFeatureG'],
+				'socialFeatureP'    => $tntOptions['socialFeatureP'] 
 	        );
 	        update_option('tntVideoManageOptions', $videoOptions);
 		}
