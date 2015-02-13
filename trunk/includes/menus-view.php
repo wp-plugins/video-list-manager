@@ -912,17 +912,31 @@ function tnt_video_option(){
 						</td>
 					</tr>
 					<tr valign="top">
+						<th scope="row"><label for="tntSocialFeature">Enable Social Feature</label></th>
+						<td>
+							<input class="tntSocialFeature" type="checkbox" name="tntSocialFeature" <?php echo ($tntOptions['socialFeature']) ? "checked" : "" ?> value="1" />
+							<div class="socialFeatureDetail">
+								<ul class="tntSocialItems">
+									<li><label for="tntSocialItemFB"><span>Facebook</span> <input type="checkbox" class="tntSocialItem" id="tntSocialItemFB" name="tntSocialFeatureFB" <?php echo ($tntOptions['socialFeatureFB']) ? "checked" : "" ?> value="1" /></label></li>
+									<li><label for="tntSocialItemTW"><span>Twitter</span> <input type="checkbox" class="tntSocialItem" id="tntSocialItemTW" name="tntSocialFeatureTW" <?php echo ($tntOptions['socialFeatureTW']) ? "checked" : "" ?> value="1" /></label></li>
+									<li><label for="tntSocialItemG"><span>Google +</span> <input type="checkbox" class="tntSocialItem" id="tntSocialItemG" name="tntSocialFeatureG" <?php echo ($tntOptions['socialFeatureG']) ? "checked" : "" ?> value="1" /></label></li>
+									<li><label for="tntSocialItemP"><span>Pinterest </span><input type="checkbox" class="tntSocialItem" id="tntSocialItemP" name="tntSocialFeatureP" <?php echo ($tntOptions['socialFeatureP']) ? "checked" : "" ?> value="1" /></label></li>
+								</ul>
+								<div class="tntSocialIconSize">
+									<label for="">Social Icons Size: </label>
+									<select name="tntSocialFeatureIconSize">
+										<option <?php echo ($tntOptions['socialFeatureIconSize'] == 32) ? "selected" : "" ?> value="32">32x32</option>
+										<option <?php echo ($tntOptions['socialFeatureIconSize'] == 24) ? "selected" : "" ?> value="24">24x24</option>
+									</select>
+								</div>								
+							</div>
+						</td>
+					</tr>
+					<tr valign="top">
 						<th scope="row"></th>
 						<td>
 							<input type="submit" name="tntUpdateVideoOptions" value="Save Settings" class="button-primary"/>
 							<input type="submit" name="reset" value="Reset" class="button-secondary">
-						</td>
-					</tr>
-					<tr valign="top">
-						<th scope="row"><label for="tntSocialFeature">Enable Social Feature</label></th>
-						<td>
-							<?php echo ($tntOptions['socialFeature']); ?>
-							<input type="checkbox" name="tntSocialFeature" <?php echo ($tntOptions['socialFeature']) ? "checked" : "" ?> value="1" />
 						</td>
 					</tr>
 				</table>

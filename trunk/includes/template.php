@@ -92,7 +92,23 @@
 
 	function tntTemplateVideoList($argsList = null, $paginator = null, $columns = 2)
 	{	
+		$tntOptions = get_option('tntVideoManageOptions');
+		echo $tntOptions["tntSocialFeature"];
 		$view = "";
+
+
+		$socialFeature   = (($tntOptions["socialFeature"] == 1) && ($tntOptions["socialFeatureFB"] == 1 || $tntOptions["socialFeatureTW"] == 1 || $tntOptions["socialFeatureG"] == 1 ||$tntOptions["socialFeatureP"] == 1)) ? "dpb" : "dpn";
+		$socialFeatureFB = ($tntOptions["socialFeatureFB"] == 1) ? "dpb" : "dpn";
+		$socialFeatureTW = ($tntOptions["socialFeatureTW"] == 1) ? "dpb" : "dpn";
+		$socialFeatureG  = ($tntOptions["socialFeatureG"] == 1) ? "dpb" : "dpn";
+		$socialFeatureP  = ($tntOptions["socialFeatureP"] == 1) ? "dpb" : "dpn";
+
+		$socialFeatureTitle = ($tntOptions["socialFeatureIconSize"] == "") ? "tntSocialShareTitle32" : "tntSocialShareTitle".$tntOptions["socialFeatureIconSize"];
+		$socialFeatureFBIcon = ($tntOptions["socialFeatureIconSize"] == "") ? "tntIcon32 tntFIcon32" : "tntIcon".$tntOptions["socialFeatureIconSize"]." tntFIcon".$tntOptions["socialFeatureIconSize"];
+		$socialFeatureTWIcon = ($tntOptions["socialFeatureIconSize"] == "") ? "tntIcon32 tntTIcon32" : "tntIcon".$tntOptions["socialFeatureIconSize"]." tntTIcon".$tntOptions["socialFeatureIconSize"];
+		$socialFeatureGIcon = ($tntOptions["socialFeatureIconSize"] == "") ? "tntIcon32 tntGIcon32" : "tntIcon".$tntOptions["socialFeatureIconSize"]." tntGIcon".$tntOptions["socialFeatureIconSize"];
+		$socialFeaturePIcon = ($tntOptions["socialFeatureIconSize"] == "") ? "tntIcon32 tntPIcon32" : "tntIcon".$tntOptions["socialFeatureIconSize"]." tntPIcon".$tntOptions["socialFeatureIconSize"];
+
 		if($argsList != null)
 		{
 			$view .= '<div class="tntVideoList" width="'.$argsList[0]['videoWidth'].'" height="'.$argsList[0]['videoHeight'].'" rel="'.$columns.'">';
@@ -111,13 +127,14 @@
 				$view .= '<a class="videoLink" href="'.$video['videoEmbed'].'" title="'.$video['videoTitle'].'">';
 				$view .= '<img src="'.$video['videoThumb'].'" />';
 				$view .= '</a>';
-				$view .= '<div class="tntVideoSocialShare">';
-				$view .= '<h4>Share:</h4>';
+
+				$view .= '<div class="tntVideoSocialShare '.$socialFeature.'">';
+				$view .= '<h4 class="'.$socialFeatureTitle.'">Share:</h4>';
 				$view .= '<ul>';
-				$view .= '<li><a class="tntIcon32 tntFIcon32" href="https://www.facebook.com/sharer/sharer.php?u='.$video['videoEmbed'].'" target="_blank" title="Share on Facebook">Share on Facebook</a></li>';
-				$view .= '<li><a class="tntIcon32 tntTIcon32" href="https://twitter.com/home?status='.$video['videoEmbed'].'" target="_blank" title="Share on Twitter">Share on Twitter</a></li>';
-				$view .= '<li><a class="tntIcon32 tntGIcon32" href="https://plus.google.com/share?url='.$video['videoEmbed'].'" target="_blank" title="Share on Google+">Share on Google+</a></li>';
-				$view .= '<li><a class="tntIcon32 tntPIcon32" href="https://pinterest.com/pin/create/button/?url='.$video['videoEmbed'].'&media='.$video['videoThumb'].'&description=" target="_blank" title="Share on Pinterest">Share on Pinterest</a></li>';
+				$view .= '<li class="'.$socialFeatureFB.'"><a class="'.$socialFeatureFBIcon.'" href="https://www.facebook.com/sharer/sharer.php?u='.$video['videoEmbed'].'" target="_blank" title="Share on Facebook">Share on Facebook</a></li>';
+				$view .= '<li class="'.$socialFeatureTW.'"><a class="'.$socialFeatureTWIcon.'" href="https://twitter.com/home?status='.$video['videoEmbed'].'" target="_blank" title="Share on Twitter">Share on Twitter</a></li>';
+				$view .= '<li class="'.$socialFeatureG.'"><a class="'.$socialFeatureGIcon.'" href="https://plus.google.com/share?url='.$video['videoEmbed'].'" target="_blank" title="Share on Google+">Share on Google+</a></li>';
+				$view .= '<li class="'.$socialFeatureP.'"><a class="'.$socialFeaturePIcon.'" href="https://pinterest.com/pin/create/button/?url='.$video['videoEmbed'].'&media='.$video['videoThumb'].'&description=" target="_blank" title="Share on Pinterest">Share on Pinterest</a></li>';
 				$view .= '</ul>';
 				$view .= '<div class="clear"></div>';
 				$view .= '</div>';

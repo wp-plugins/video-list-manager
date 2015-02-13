@@ -255,30 +255,42 @@
 	 */
 	if(isset($_POST['tntUpdateVideoOptions']))
 	{
-		$videoLimit 		= $_POST['videoLimit'];
-		$videoLimitAdmin 	= $_POST['videoLimitAdmin'];
-		$videoColumn 		= $_POST['videoColumn'];
-		$tntJquery 			= $_POST['tntJquery'];
-		$tntColorbox 		= $_POST['tntColorbox'];
-		$skinColorbox 		= $_POST['skinColorbox'];
-		$videoWidth 		= $_POST['videoWidth'];
-		$videoHeight 		= $_POST['videoHeight'];
-		$videoOrder 		= $_POST['videoOrder'];
-		$videoOrderBy 		= $_POST['videoOrderBy'];
+		$videoLimit               = $_POST['videoLimit'];
+		$videoLimitAdmin          = $_POST['videoLimitAdmin'];
+		$videoColumn              = $_POST['videoColumn'];
+		$tntJquery                = $_POST['tntJquery'];
+		$tntColorbox              = $_POST['tntColorbox'];
+		$skinColorbox             = $_POST['skinColorbox'];
+		$videoWidth               = $_POST['videoWidth'];
+		$videoHeight              = $_POST['videoHeight'];
+		$videoOrder               = $_POST['videoOrder'];
+		$videoOrderBy             = $_POST['videoOrderBy'];
+		$tntSocialFeature         = $_POST['tntSocialFeature'];
+		$tntSocialFeatureFB       = $_POST['tntSocialFeatureFB'];
+		$tntSocialFeatureTW       = $_POST['tntSocialFeatureTW'];
+		$tntSocialFeatureG        = $_POST['tntSocialFeatureG'];
+		$tntSocialFeatureP        = $_POST['tntSocialFeatureP'];
+		$tntSocialFeatureIconSize = $_POST['tntSocialFeatureIconSize'];
 
 		if($videoLimit != "")
 		{
 			$videoOptions = array(
-				'limitPerPage' 			=> $videoLimit,
-				'limitAdminPerPage' 	=> $videoLimitAdmin,
-				'columnPerRow' 			=> $videoColumn,
-				'tntJquery'				=> $tntJquery,
-				'tntColorbox'			=> $tntColorbox,	
-				'skinColorbox'			=> $skinColorbox,
-				'videoWidth'			=> $videoWidth,
-				'videoHeight'			=> $videoHeight,
-				'videoOrder' 			=> $videoOrder,
-				'videoOrderBy'			=> $videoOrderBy
+				'limitPerPage'          => $videoLimit,
+				'limitAdminPerPage'     => $videoLimitAdmin,
+				'columnPerRow'          => $videoColumn,
+				'tntJquery'             => $tntJquery,
+				'tntColorbox'           => $tntColorbox,	
+				'skinColorbox'          => $skinColorbox,
+				'videoWidth'            => $videoWidth,
+				'videoHeight'           => $videoHeight,
+				'videoOrder'            => $videoOrder,
+				'videoOrderBy'          => $videoOrderBy,
+				'socialFeature'         => $tntSocialFeature,
+				'socialFeatureFB'       => $tntSocialFeatureFB,
+				'socialFeatureTW'       => $tntSocialFeatureTW,
+				'socialFeatureG'        => $tntSocialFeatureG,
+				'socialFeatureP'        => $tntSocialFeatureP,
+				'socialFeatureIconSize' => $tntSocialFeatureIconSize
 			);
 			update_option('tntVideoManageOptions', $videoOptions);
 
