@@ -24,7 +24,7 @@ Main Features:
 * Support 5 colorbox skins
 * Fit all layouts
 
-Note: NEED TO ENABLE THE PERMALINK (Go to SETTINGS --> PERMALINKS and set COMMON SETTINGS is "post name"). Read more at: http://videolistmanager.blogspot.com/ 
+Note: WORDPRESS MUST ENABLE THE PERMALINK FEATURE (From DASHBOARD, go to SETTINGS --> PERMALINKS and set COMMON SETTINGS is "POST NAME"). Read more at: http://videolistmanager.blogspot.com/ 
 
 Tutorial: http://www.youtube.com/watch?v=R_0BmfKC1Jw
 
