@@ -193,21 +193,22 @@
 		if ($installed_ver != $tnt_db_version) {
 			$tntOptions = get_option('tntVideoManageOptions');
 			$videoOptions = array(
-				'limitPerPage'      => $tntOptions['limitPerPage'],
-				'limitAdminPerPage' => $tntOptions['limitAdminPerPage'],
-				'columnPerRow'      => $tntOptions['columnPerRow'],
-				'tntJquery'         => $tntOptions['tntJquery'],
-				'tntColorbox'       => $tntOptions['tntColorbox'],
-				'skinColorbox'      => $tntOptions['skinColorbox'],
-				'videoWidth'        => $tntOptions['videoWidth'],
-				'videoHeight'       => $tntOptions['videoHeight'],
-				'videoOrder'        => 'addingdate',
-				'videoOrderBy'      => 'desc',
-				'socialFeature'     => $tntOptions['socialFeature'],
-				'socialFeatureFB'   => $tntOptions['socialFeatureFB'],
-				'socialFeatureTW'   => $tntOptions['socialFeatureTW'],
-				'socialFeatureG'    => $tntOptions['socialFeatureG'],
-				'socialFeatureP'    => $tntOptions['socialFeatureP'] 
+				'limitPerPage'          => $tntOptions['limitPerPage'],
+				'limitAdminPerPage'     => $tntOptions['limitAdminPerPage'],
+				'columnPerRow'          => $tntOptions['columnPerRow'],
+				'tntJquery'             => $tntOptions['tntJquery'],
+				'tntColorbox'           => $tntOptions['tntColorbox'],
+				'skinColorbox'          => $tntOptions['skinColorbox'],
+				'videoWidth'            => $tntOptions['videoWidth'],
+				'videoHeight'           => $tntOptions['videoHeight'],
+				'videoOrder'            => $tntOptions['videoOrder'],
+				'videoOrderBy'          => $tntOptions['videoOrderBy'],
+				'socialFeature'         => $tntOptions['socialFeature'],
+				'socialFeatureFB'       => $tntOptions['socialFeatureFB'],
+				'socialFeatureTW'       => $tntOptions['socialFeatureTW'],
+				'socialFeatureG'        => $tntOptions['socialFeatureG'],
+				'socialFeatureP'        => $tntOptions['socialFeatureP'],
+				'socialFeatureIconSize' => $tntOptions['socialFeatureIconSize']
 	        );
 	        update_option('tntVideoManageOptions', $videoOptions);
 		}

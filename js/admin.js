@@ -122,4 +122,24 @@ jQuery(document).ready(function($){
 			}
 		}
 	});
+
+	if($("input.tntSocialFeature").is(":checked") == true)
+	{
+		$('.socialFeatureDetail').show();
+	}
+	else
+	{
+		$('.socialFeatureDetail').hide();	
+	}
+
+	$("input.tntSocialFeature").click(function(){
+		if($(this).is(":checked"))
+		{
+			$(this).parent().find('.socialFeatureDetail').show();
+		}
+		else
+		{
+			$(this).parent().find('.socialFeatureDetail').hide();	
+		}
+	})
 });	

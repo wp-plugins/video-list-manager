@@ -1,4 +1,6 @@
 .tntVideoList{}
+.tntVideoList .dpn{display: none;}
+.tntVideoList .dpb{display: block;}
 .tntVideoItem{float: left; /*margin-left: 20px;*/ margin-bottom: 10px;}
 .tntVideoItem.noML{margin-left:0;}
 .tntVideoItem a.videoLink{display: block;}
@@ -16,15 +18,18 @@
 .pagiWrap .pagination a.next{}
 
 .tntVideoSocialShare{float: right; margin-top: 5px;}
-.tntVideoSocialShare h4{float: left; font-size: 14px; margin-top: 0 !important; height: 32px; line-height: 32px}
+.tntVideoSocialShare h4{float: left; font-size: 14px; margin-top: 0 !important;}
 .tntVideoSocialShare ul{float:left; margin:0; padding:0;}
 .tntVideoSocialShare ul li{float: left; margin-left: 5px;}
+
+.tntVideoSocialShare .tntSocialShareTitle32{height: 32px; line-height: 32px}
 .tntVideoSocialShare .tntIcon32{width: 32px; height: 32px; display:block; background: url(../images/social-icon.png) no-repeat; text-indent: -9999px;}
 .tntVideoSocialShare .tntFIcon32{background-position: 0 0;}
 .tntVideoSocialShare .tntTIcon32{background-position: -96px 0;}
 .tntVideoSocialShare .tntGIcon32{background-position: -32px 0;}
 .tntVideoSocialShare .tntPIcon32{background-position: -64px 0;}
 
+.tntVideoSocialShare .tntSocialShareTitle24{height: 24px; line-height: 24px}
 .tntVideoSocialShare .tntIcon24{width: 24px; height: 24px; display:block; background: url(../images/social-icon.png) no-repeat; text-indent: -9999px; background-size: 96px 24px;}
 .tntVideoSocialShare .tntFIcon24{background-position: 0 0;}
 .tntVideoSocialShare .tntTIcon24{background-position: -72px 0;}
