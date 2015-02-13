@@ -112,13 +112,16 @@
 				$view .= '<img src="'.$video['videoThumb'].'" />';
 				$view .= '</a>';
 				$view .= '<div class="tntVideoSocialShare">';
+				$view .= '<h4>Share:</h4>';
 				$view .= '<ul>';
-				$view .= '<li><a href="https://www.facebook.com/sharer/sharer.php?u='.$video['videoEmbed'].'" target="_blank">Share on Facebook</a></li>';
-				$view .= '<li><a href="https://twitter.com/home?status='.$video['videoEmbed'].'" target="_blank">Share on Twitter</a></li>';
-				$view .= '<li><a href="https://plus.google.com/share?url='.$video['videoEmbed'].'" target="_blank">Share on Google+</a></li>';
-				$view .= '<li><a href="https://pinterest.com/pin/create/button/?url='.$video['videoEmbed'].'&media='.$video['videoThumb'].'&description=" target="_blank">Share on Pinterest</a></li>';
+				$view .= '<li><a class="tntIcon32 tntFIcon32" href="https://www.facebook.com/sharer/sharer.php?u='.$video['videoEmbed'].'" target="_blank" title="Share on Facebook">Share on Facebook</a></li>';
+				$view .= '<li><a class="tntIcon32 tntTIcon32" href="https://twitter.com/home?status='.$video['videoEmbed'].'" target="_blank" title="Share on Twitter">Share on Twitter</a></li>';
+				$view .= '<li><a class="tntIcon32 tntGIcon32" href="https://plus.google.com/share?url='.$video['videoEmbed'].'" target="_blank" title="Share on Google+">Share on Google+</a></li>';
+				$view .= '<li><a class="tntIcon32 tntPIcon32" href="https://pinterest.com/pin/create/button/?url='.$video['videoEmbed'].'&media='.$video['videoThumb'].'&description=" target="_blank" title="Share on Pinterest">Share on Pinterest</a></li>';
 				$view .= '</ul>';
+				$view .= '<div class="clear"></div>';
 				$view .= '</div>';
+				$view .= '<div class="clear"></div>';
 				$view .= '</div>';
 				if($i % $columns == 0)
 				{
