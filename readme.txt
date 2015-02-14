@@ -43,9 +43,9 @@ No Frequently Asked Questions
 == Screenshots ==
 
 1. Video Manager
-2. Add Video
-3. Categories
-4. Settings
+2. Options
+3. Showing in grid 
+4. Colorbox Effect
 
 == Changelog ==
 
