@@ -830,11 +830,11 @@ function tnt_video_option(){
 					$m = $_GET["m"];
 					if($m) 
 					{
-						showMessage("Your video manager options updated successfully!", $m);
+						showMessage("Your options updated successfully!", $m);
 					}
 					else
 					{
-						showMessage("Your video manager options updated failed!", $m);	
+						showMessage("Your options updated failed!", $m);	
 					}	
 				}
 

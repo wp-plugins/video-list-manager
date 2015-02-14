@@ -2,7 +2,7 @@
 /*
 Plugin Name: Video List Manager
 Plugin URI: http://videolistmanager.blogspot.com/
-Description: Video List Manager help you to add, edit, delete and manage YOUTUBE, VIMEO, DAILYMOTION videos, separated by categories, display them in colorbox by category, fit all layouts. 
+Description: Video List Manager is the video list plugin for WordPress, created by Tung Pham (email: tungpham.bh@gmail.com). It helps your site display videos from YOUTUBE, VIMEO, DAILYMOTION with lightbox effect easily. Especially, all your videos will be fitted on all themes.
 Version: 1.6
 Author: Tung Pham
 Author URI: http://videolistmanager.blogspot.com
