@@ -178,8 +178,8 @@ function tnt_video_manage(){
 								<td><?php echo date('Y-m-d H:i:s', $tntV->date_created); ?></td>
 								<td><?php echo date('Y-m-d H:i:s', $tntV->date_modified); ?></td>
 								<td>
-									<a href="<?php echo admin_url() ?>admin.php?page=tnt_video_edit_page&videoID=<?php echo $tntV->video_id; ?>" class="button-highlighted">Edit</a> 
-									<a href="<?php echo admin_url() ?>admin.php?page=tnt_video_del_page&videoID=<?php echo $tntV->video_id; ?>" class="button-highlighted">Delete</a>
+									<a href="<?php echo admin_url() ?>admin.php?page=tnt_video_edit_page&videoID=<?php echo $tntV->video_id; ?>" class="button-secondary">Edit</a> 
+									<a href="<?php echo admin_url() ?>admin.php?page=tnt_video_del_page&videoID=<?php echo $tntV->video_id; ?>" class="button-secondary">Delete</a>
 								</td>
 							</tr>
 					 <?php endforeach ?>
@@ -310,7 +310,7 @@ function tnt_video_add(){
 						</tr>
 						<tr>
 							<th scope="row"></th>
-							<td><a href="#" class="removeVideoItem button-highlighted" title="Remove Video Item">Remove</a></td>
+							<td><a href="#" class="removeVideoItem button-secondary" title="Remove Video Item">Remove</a></td>
 						</tr>
 					</table>
 				</div>
@@ -474,8 +474,8 @@ function tnt_video_type_manager(){
 							<tr>
 								<td><?php echo $tntT->video_type_title ?></td>
 								<td>
-									<a href="<?php echo admin_url() ?>admin.php?page=tnt_video_type_edit_page&typeID=<?php echo $tntT->video_type_id; ?>" class="button-highlighted">Edit</a> 
-									<a href="<?php echo admin_url() ?>admin.php?page=tnt_video_type_del_page&typeID=<?php echo $tntT->video_type_id; ?>" class="button-highlighted">Delete</a>
+									<a href="<?php echo admin_url() ?>admin.php?page=tnt_video_type_edit_page&typeID=<?php echo $tntT->video_type_id; ?>" class="button-secondary">Edit</a> 
+									<a href="<?php echo admin_url() ?>admin.php?page=tnt_video_type_del_page&typeID=<?php echo $tntT->video_type_id; ?>" class="button-secondary">Delete</a>
 								</td>
 							</tr>
 					 <?php endforeach ?>
@@ -672,8 +672,8 @@ function tnt_video_cat_manager(){
 								<td><?php echo $tntC->video_cat_parent_id ?></td>
 								<td><?php echo '[tnt_video_list id='.$tntC->video_cat_id.']' ?></td>
 								<td>
-									<a href="<?php echo admin_url() ?>admin.php?page=tnt_video_cat_edit_page&catID=<?php echo $tntC->video_cat_id; ?>" class="button-highlighted">Edit</a> 
-									<a href="<?php echo admin_url() ?>admin.php?page=tnt_video_cat_del_page&catID=<?php echo $tntC->video_cat_id; ?>" class="button-highlighted">Delete</a>
+									<a href="<?php echo admin_url() ?>admin.php?page=tnt_video_cat_edit_page&catID=<?php echo $tntC->video_cat_id; ?>" class="button-secondary">Edit</a> 
+									<a href="<?php echo admin_url() ?>admin.php?page=tnt_video_cat_del_page&catID=<?php echo $tntC->video_cat_id; ?>" class="button-secondary">Delete</a>
 								</td>
 							</tr>
 					 <?php endforeach ?>
