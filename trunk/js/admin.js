@@ -30,7 +30,7 @@ jQuery(document).ready(function($){
 	tntInfoVideoTable += '</tr>';
 	tntInfoVideoTable += '<tr>';
 	tntInfoVideoTable += '<th scope="row"></th>';
-	tntInfoVideoTable += '<td><a href="#" class="removeVideoItem button-highlighted title="Remove Video Item">Remove</a></td>';
+	tntInfoVideoTable += '<td><a href="#" class="removeVideoItem button-secondary title="Remove Video Item">Remove</a></td>';
 	tntInfoVideoTable += '</tr>';
 	tntInfoVideoTable += '</tbody></table>';
 
