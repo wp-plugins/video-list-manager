@@ -8,11 +8,11 @@ Stable tag: 1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Display videos easily (from YOUTUBE, VIMEO, DAILYMOTION) with lightbox effect easily. Especially, all your videos will be fitted on all layouts. 
+Display videos easily (from YOUTUBE, VIMEO, DAILYMOTION) with lightbox effect. Especially, all your videos will be fitted on all layouts. 
 
 == Description ==
 
-Video List Manager is the plugin for WordPress, created by Tung Pham (email: tungpham.bh@gmail.com). It helps your site display videos easily with lightbox effect easily. Especially, all your videos will be fitted on all themes. 
+Video List Manager is the plugin for WordPress, created by Tung Pham (email: tungpham.bh@gmail.com). It helps your site display videos easily with lightbox effect. Especially, all your videos will be fitted on all themes. 
 
 Read more at: http://videolistmanager.blogspot.com/ 
 
